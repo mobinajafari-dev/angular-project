@@ -5,4 +5,4 @@ export * from './Interfaces/shared-interface.api';
 export * from './shared.module';
 
 // component module
-export * from './Components/shared-component.api';
+// export * from './Components/shared-component.api';
