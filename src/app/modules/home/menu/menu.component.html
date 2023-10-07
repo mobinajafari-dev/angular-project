@@ -1,1 +1,24 @@
-<p>menu lazy loaded!</p>
+<!-- header menu -->
+<div class="flex px-3 py-4 m-auto align-items-center justify-content-around">
+  <a routerLink="/home"
+    ><img src="assets/images/logo.webp" alt="logo-menu"
+  /></a>
+  <ul class="flex align-items-center justify-content-around px-2">
+    <li class="list-none">
+      <a
+        [routerLink]="menuItem.path"
+        class="no-underline color-black px-4"
+        routerLinkActive="active-menu-item"
+        *ngFor="let menuItem of menuItems"
+        >{{ menuItem.title }}</a
+      >
+    </li>
+  </ul>
+  <img
+    width="20"
+    height="20"
+    src="https://img.icons8.com/material-rounded/24/search.png"
+    alt="search"
+    class="cursor-pointer"
+  />
+</div>
