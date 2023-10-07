@@ -1,0 +1,16 @@
+// global element styles
+a {
+  color: #000;
+}
+* {
+  font-family: "Dirooz";
+}
+
+// font face
+@font-face {
+  font-family: "Dirooz";
+  src: url("./assets/fonts/Dirooz.ttf") format("truetype");
+  font-weight: normal;
+}
+
+// mixins

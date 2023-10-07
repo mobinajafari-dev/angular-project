@@ -24,7 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
             "assets": ["src/assets"],
-            "styles": ["src/global-styles.sass"],
+            "styles": ["src/global-styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -79,7 +79,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "sass",
             "assets": ["src/assets"],
-            "styles": ["src/global-styles.sass"],
+            "styles": ["src/global-styles.scss"],
             "scripts": []
           }
         }
