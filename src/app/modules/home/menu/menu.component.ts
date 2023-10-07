@@ -4,7 +4,7 @@ import { Menu } from '@shared';
 @Component({
   selector: 'app-menu',
   templateUrl: `./menu.component.html`,
-  styles: [],
+  styleUrls: ['./menu.component.sass'],
 })
 export class MenuComponent {
   menuItems: Menu[];
