@@ -1,13 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './menu/menu.component';
 import { NgModule } from '@angular/core';
+
 import { HomeComponent } from './home.component';
+import { BodyComponent } from './body/body.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    children: [{ path: 'menu', component: MenuComponent }],
+    children: [{ path: '', component: BodyComponent }],
   },
 ];
 

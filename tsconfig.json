@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "paths": { "@shared": ["/src/app/shared/shared.module.ts"] },
+    "paths": { "@shared": ["./src/app/shared/shared.module.ts"] },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
