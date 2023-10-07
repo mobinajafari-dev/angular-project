@@ -1,0 +1,14 @@
+// selected menu item style
+
+.active-menu-item {
+  border-bottom: 5px solid #555;
+}
+
+// menu item style
+
+.menu-item {
+  &:hover {
+    border-bottom: 1px solid #000;
+    transition: all ease-in 0.5ms;
+  }
+}

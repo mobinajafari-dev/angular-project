@@ -4,7 +4,7 @@ import { Menu } from '@shared';
 @Component({
   selector: 'app-menu',
   templateUrl: `./menu.component.html`,
-  styleUrls: ['./menu.component.sass'],
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
   menuItems: Menu[];
@@ -14,7 +14,7 @@ export class MenuComponent {
       { id: 2, title: ' درباره ما', path: '/about-us' },
       { id: 3, title: ' محصولات', path: '/products' },
       { id: 4, title: ' ارتباط با ما', path: '/contact-us' },
-      { id: 5, title: ' بلاگ', path: '' },
+      { id: 5, title: ' بلاگ', path: '/blog' },
       { id: 6, title: ' ورود', path: '/login' },
     ];
   }
