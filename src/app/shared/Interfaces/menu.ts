@@ -1,5 +1,5 @@
 export interface Menu {
-  id: number;
-  title: string;
-  path: string;
+  id: number | string;
+  title: string | string[];
+  path: string | string[];
 }

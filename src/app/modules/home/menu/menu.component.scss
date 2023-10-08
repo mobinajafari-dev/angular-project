@@ -1,15 +1,15 @@
 // selected menu item style
 
 .active-menu-item {
-  border-bottom: 5px solid #555;
+  // border-bottom: 1px solid #000;
 }
 
 // menu item style
 
 .menu-item {
   &:hover {
-    border-bottom: 1px solid #000;
-    border-top: 1px solid #000;
-    transition: all ease-in 0.5ms;
+    border-bottom: 1px solid #555;
+
+    transition: all linear 5ms;
   }
 }

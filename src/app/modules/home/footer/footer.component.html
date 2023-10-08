@@ -1,1 +1,59 @@
-<p>footer works</p>
+<!-- footer -->
+
+<footer>
+  <!-- footer email getter -->
+  <div>
+    <h1>با ما در ارتباط باشید</h1>
+    <p>برای اطلاع از آخرین تخفیف ها عضو شوید</p>
+    <div class="p-inputgroup">
+      <input
+        type="text"
+        pInputText
+        placeholder="ایمیل خود را وارد کنید"
+        class="p-1"
+      />
+      <button
+        type="button"
+        pButton
+        label="خبر م کن"
+        class="p-1 bg-$primary-black"
+      ></button>
+    </div>
+  </div>
+  <!-- starting the footer box -->
+  <div>
+    <!-- address and information section -->
+    <h2>آدرس</h2>
+    <address>
+      Acme Widgets 123 Widget Street Acmeville, AC 12345 United States of
+      America
+    </address>
+    <p>با ما تماس بگیرید</p>
+    <p>+000-000-0000</p>
+  </div>
+  <!-- footer menu is here -->
+  <div>
+    <div>
+      <!-- column -->
+      <div *ngFor="let footerItem of footerItems">
+        <h3>{{ footerItem.id }}</h3>
+        <ul>
+          <li></li>
+        </ul>
+        <img src="/src/assets/images/primary-icon.png" alt="primary-icon" />
+      </div>
+      <div>
+        <h3>طرف قرارداد با</h3>
+        <img src="/src/assets/images/primary-icon.png" alt="primary-icon" />
+        <svg class="footer-payment-icon">
+          <use xlink:href="#icon-logo-paypal"></use>
+        </svg>
+      </div>
+    </div>
+    <!-- copyright section -->
+    <div>
+      <p>powered by ♥</p>
+      <p>© 2023 mobina jafari</p>
+    </div>
+  </div>
+</footer>

@@ -5,9 +5,13 @@ a {
 
 * {
   font-family: "Dirooz";
+  margin: 0;
+  padding: 0;
 }
 
 // variables
+
+$primary-black: #555;
 
 // font face
 @font-face {
