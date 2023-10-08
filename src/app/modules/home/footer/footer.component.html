@@ -35,7 +35,7 @@
     class="flex footer justify-content-evenly align-items-center text-white-alpha-80 p-7"
   >
     <!-- address and information section -->
-    <div class="flex flex-column w-4">
+    <div class="flex flex-column w-3 border-left-1">
       <h3 class="text-base">آدرس</h3>
       <div class="w-12rem">
         <p>
@@ -47,22 +47,22 @@
       <p>+000-000-0000</p>
     </div>
     <!-- footer menu is here -->
-    <div class="flex flex-column w-8">
+    <div class="flex flex-column w-9">
       <!-- footer menu right -->
       <div class="flex align-items-start">
         <!-- column -->
         <div
           *ngFor="let footerItem of footerItems"
-          class="flex flex-column justify-content-around px-3 pb-4"
+          class="flex flex-column justify-content-around px-7 pb-4"
         >
-          <h3>{{ footerItem.id }}</h3>
+          <h3 class="mb-1">{{ footerItem.id }}</h3>
           <img
             width="20"
             height="20"
             src="https://img.icons8.com/ios-glyphs/30/999999/more.png"
             alt="more"
           />
-          <ul>
+          <ul class="pt-3">
             <!-- index is each footerItem that we wanna loop -->
             <li *ngFor="let index of footerItem.items">
               <a [routerLink]="index.path">{{ index.title }}</a>
@@ -83,28 +83,28 @@
               height="40"
               src="https://img.icons8.com/ios/40/999999/paypal.png"
               alt="paypal"
-              class=""
+              class="mx-1"
             />
             <img
               width="40"
               height="40"
               src="https://img.icons8.com/ios/40/999999/paypal.png"
               alt="paypal"
-              class=""
+              class="mx-1"
             />
             <img
               width="40"
               height="40"
               src="https://img.icons8.com/ios/40/999999/paypal.png"
               alt="paypal"
-              class=""
+              class="mx-1"
             />
           </div>
         </div>
       </div>
       <!-- copyright section -->
-      <div class="">
-        <p class="border-solid border-none border-top-1 py-4">
+      <div class="border-right-1">
+        <p class="border-solid border-none border-top-1 py-4 pr-4">
           © 2023 mobina jafari
         </p>
       </div>
