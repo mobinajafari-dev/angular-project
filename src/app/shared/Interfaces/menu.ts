@@ -1,5 +1,9 @@
-export interface Menu {
+export interface IMenu {
   id: number | string;
-  title: string | string[];
-  path: string | string[];
+  items: IItems[];
+}
+
+export interface IItems {
+  title: string;
+  path: string;
 }

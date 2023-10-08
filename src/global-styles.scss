@@ -1,12 +1,19 @@
 // global element styles
 a {
   color: #000;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 
 * {
   font-family: "Dirooz";
   margin: 0;
   padding: 0;
+  direction: rtl;
+  box-sizing: border-box;
 }
 
 // variables
@@ -21,3 +28,8 @@ $primary-black: #555;
 }
 
 // mixins
+
+@mixin box-shadow($opacity) {
+  $color: rgba(0, 0, 0, $opacity);
+  box-shadow: 0px 0px 10px 0px $color;
+}

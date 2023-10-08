@@ -4,17 +4,20 @@
     ><img src="assets/images/logo.webp" alt="logo-menu"
   /></a>
   <ul class="flex align-items-center justify-content-around px-2">
-    <li class="list-none px-4">
+    <li class="list-none px-2" *ngFor="let menuItem of menuItems">
+      <!-- index is each MenuItem that we wanna loop -->
       <a
-        [routerLink]="menuItem.path"
+        *ngFor="let index of menuItem.items"
+        [routerLink]="index.path"
         class="no-underline color-black px-4 py-3 menu-item"
         routerLinkActive="active-menu-item"
-        *ngFor="let menuItem of menuItems"
-        >{{ menuItem.title }}</a
+        >{{ index.title }}</a
       >
     </li>
   </ul>
+
   <!-- primeNG -->
+
   <!-- <div class="flex align-items-center justify-content-around px-2">
     <div class="card flex justify-content-center">
       <p-button
@@ -27,6 +30,7 @@
       ></p-button>
     </div>
   </div> -->
+
   <img
     width="20"
     height="20"

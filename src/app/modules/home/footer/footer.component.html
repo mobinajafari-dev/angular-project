@@ -1,59 +1,113 @@
 <!-- footer -->
 
-<footer>
-  <!-- footer email getter -->
-  <div>
-    <h1>با ما در ارتباط باشید</h1>
-    <p>برای اطلاع از آخرین تخفیف ها عضو شوید</p>
-    <div class="p-inputgroup">
-      <input
-        type="text"
-        pInputText
-        placeholder="ایمیل خود را وارد کنید"
-        class="p-1"
-      />
-      <button
-        type="button"
-        pButton
-        label="خبر م کن"
-        class="p-1 bg-$primary-black"
-      ></button>
+<div class="line-height-4 bottom-0 right-0 left-0 static w-full">
+  <!-- footer email input -->
+
+  <div
+    class="flex flex-column justify-content-center align-items-center mb-5 border-top-1 border py-4 mt-2 email-input-section"
+  >
+    <h1 class="text-2xl">با ما در ارتباط باشید</h1>
+    <p class="text-sm">برای اطلاع از آخرین تخفیف ها عضو شوید</p>
+    <img
+      width="20"
+      height="20"
+      src="https://img.icons8.com/ios-glyphs/30/999999/more.png"
+      alt="more"
+    />
+    <div class="my-1 border-none">
+      <div class="w-30rem email-wrapper m-3">
+        <input
+          type="email"
+          placeholder="ایمیل خود را وارد کنید"
+          class="p-2 outline-none m-0 border-none email-wrapper w-9"
+        />
+        <button
+          type="button"
+          class="w-3 p-2 border-round-sm border-noround-right border-none cursor-pointer text-white bg-black-alpha-60"
+        >
+          خبرم کنید
+        </button>
+      </div>
     </div>
   </div>
   <!-- starting the footer box -->
-  <div>
+  <div
+    class="flex footer justify-content-evenly align-items-center text-white-alpha-80 p-7"
+  >
     <!-- address and information section -->
-    <h2>آدرس</h2>
-    <address>
-      Acme Widgets 123 Widget Street Acmeville, AC 12345 United States of
-      America
-    </address>
-    <p>با ما تماس بگیرید</p>
-    <p>+000-000-0000</p>
-  </div>
-  <!-- footer menu is here -->
-  <div>
-    <div>
-      <!-- column -->
-      <div *ngFor="let footerItem of footerItems">
-        <h3>{{ footerItem.id }}</h3>
-        <ul>
-          <li></li>
-        </ul>
-        <img src="/src/assets/images/primary-icon.png" alt="primary-icon" />
+    <div class="flex flex-column w-4">
+      <h3 class="text-base">آدرس</h3>
+      <div class="w-12rem">
+        <p>
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است
+        </p>
       </div>
-      <div>
-        <h3>طرف قرارداد با</h3>
-        <img src="/src/assets/images/primary-icon.png" alt="primary-icon" />
-        <svg class="footer-payment-icon">
-          <use xlink:href="#icon-logo-paypal"></use>
-        </svg>
+      <p>با ما تماس بگیرید</p>
+      <p>+000-000-0000</p>
+    </div>
+    <!-- footer menu is here -->
+    <div class="flex flex-column w-8">
+      <!-- footer menu right -->
+      <div class="flex align-items-start">
+        <!-- column -->
+        <div
+          *ngFor="let footerItem of footerItems"
+          class="flex flex-column justify-content-around px-3 pb-4"
+        >
+          <h3>{{ footerItem.id }}</h3>
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios-glyphs/30/999999/more.png"
+            alt="more"
+          />
+          <ul>
+            <!-- index is each footerItem that we wanna loop -->
+            <li *ngFor="let index of footerItem.items">
+              <a [routerLink]="index.path">{{ index.title }}</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>طرف قرارداد با</h3>
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios-glyphs/30/999999/more.png"
+            alt="more"
+          />
+          <div>
+            <img
+              width="40"
+              height="40"
+              src="https://img.icons8.com/ios/40/999999/paypal.png"
+              alt="paypal"
+              class=""
+            />
+            <img
+              width="40"
+              height="40"
+              src="https://img.icons8.com/ios/40/999999/paypal.png"
+              alt="paypal"
+              class=""
+            />
+            <img
+              width="40"
+              height="40"
+              src="https://img.icons8.com/ios/40/999999/paypal.png"
+              alt="paypal"
+              class=""
+            />
+          </div>
+        </div>
+      </div>
+      <!-- copyright section -->
+      <div class="">
+        <p class="border-solid border-none border-top-1 py-4">
+          © 2023 mobina jafari
+        </p>
       </div>
     </div>
-    <!-- copyright section -->
-    <div>
-      <p>powered by ♥</p>
-      <p>© 2023 mobina jafari</p>
-    </div>
   </div>
-</footer>
+</div>

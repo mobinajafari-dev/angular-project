@@ -1,19 +1,37 @@
 import { Component } from '@angular/core';
-import { Menu } from '@shared';
+import { IMenu } from '@shared';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styles: [],
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  footerItems: Menu[];
+  footerItems: IMenu[];
   constructor() {
     this.footerItems = [
       {
         id: 'منو',
-        title: ['درباره ما', 'ارتباط با ما', 'خانه'],
-        path: ['/about-us', '/contact-us', '/home'],
+        items: [
+          { title: 'خانه', path: '/home' },
+          { title: 'درباره ما', path: '/about-us' },
+          { title: 'ارتباط با ما', path: '/contact-us' },
+        ],
+      },
+      {
+        id: 'مطالب برگزیده',
+        items: [
+          { title: 'ورود', path: '/login' },
+          { title: 'محصولات', path: '/products' },
+          { title: 'بلاگ', path: '/blog' },
+        ],
+      },
+      {
+        id: 'محصولات',
+        items: [
+          { title: 'جدید ترین', path: '/new-arrivals' },
+          { title: 'پرفروش ترین', path: '/best-sellers' },
+        ],
       },
     ];
   }

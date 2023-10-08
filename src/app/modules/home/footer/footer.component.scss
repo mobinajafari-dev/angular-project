@@ -1,0 +1,18 @@
+@import "/src/global-styles.scss";
+
+.email-input-section {
+  border-color: #ccc;
+}
+
+.email-wrapper {
+  @include box-shadow(0.1);
+}
+
+.footer {
+  background-color: #3f3f3f;
+  a,
+  p {
+    color: #999;
+  }
+  border-color: #999;
+}
