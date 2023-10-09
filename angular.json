@@ -25,9 +25,8 @@
             "inlineStyleLanguage": "sass",
             "assets": ["src/assets"],
             "styles": [
-              "src/global-styles.scss",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/primeng/resources/themes/viva-dark/theme.css",
+              "src/global-styles.scss"
             ],
             "scripts": []
           },
