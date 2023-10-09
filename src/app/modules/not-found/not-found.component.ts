@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedModule } from '@shared';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-not-found',

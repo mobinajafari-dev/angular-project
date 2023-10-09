@@ -11,10 +11,10 @@ export class MenuComponent {
   constructor() {
     this.menuItems = [
       { id: 1, items: [{ title: 'خانه', path: '/home' }] },
-      { id: 2, items: [{ title: 'درباره ما', path: '/about-us' }] },
-      { id: 3, items: [{ title: 'محصولات', path: '/products' }] },
-      { id: 4, items: [{ title: 'ارتباط با ما', path: '/contact-us' }] },
-      { id: 5, items: [{ title: 'بلاگ', path: '/blog' }] },
+      { id: 2, items: [{ title: 'درباره ما', path: '/home/about-us' }] },
+      { id: 3, items: [{ title: 'محصولات', path: '/home/products' }] },
+      { id: 4, items: [{ title: 'ارتباط با ما', path: '/home/contact-us' }] },
+      { id: 5, items: [{ title: 'بلاگ', path: '/home/blog' }] },
       { id: 6, items: [{ title: 'ورود', path: '/login' }] },
     ];
   }

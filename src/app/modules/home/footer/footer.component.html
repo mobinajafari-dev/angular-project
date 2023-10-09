@@ -6,8 +6,8 @@
   <div
     class="flex flex-column justify-content-center align-items-center mb-5 border-top-1 border py-4 mt-2 email-input-section"
   >
-    <h1 class="text-2xl">با ما در ارتباط باشید</h1>
-    <p class="text-sm">برای اطلاع از آخرین تخفیف ها عضو شوید</p>
+    <h1 class="text-2xl">{{ this.emailTitle }}</h1>
+    <p class="text-sm">{{ this.emailDescription }}</p>
     <img
       width="20"
       height="20"
@@ -18,14 +18,14 @@
       <div class="w-30rem email-wrapper m-3">
         <input
           type="email"
-          placeholder="ایمیل خود را وارد کنید"
+          placeholder="{{ this.emailPlaceHolder }}"
           class="p-2 outline-none m-0 border-none email-wrapper w-9"
         />
         <button
           type="button"
           class="w-3 p-2 border-round-sm border-noround-right border-none cursor-pointer text-white bg-black-alpha-60"
         >
-          خبرم کنید
+          {{ this.emailButton }}
         </button>
       </div>
     </div>
@@ -35,16 +35,15 @@
     class="flex footer justify-content-evenly align-items-center text-white-alpha-80 p-7"
   >
     <!-- address and information section -->
-    <div class="flex flex-column w-3 border-left-1">
-      <h3 class="text-base">آدرس</h3>
+    <div class="flex flex-column w-3 border-left-1 border-solid border-none">
+      <h3 class="text-base">{{ this.footerAddressTitle }}</h3>
       <div class="w-12rem">
         <p>
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-          از طراحان گرافیک است
+          {{ this.footerAddressInfo }}
         </p>
       </div>
-      <p>با ما تماس بگیرید</p>
-      <p>+000-000-0000</p>
+      <p class="mt-4">{{ this.footerPhoneTitle }}</p>
+      <p>{{ this.footerPhoneInfo }}</p>
     </div>
     <!-- footer menu is here -->
     <div class="flex flex-column w-9">
@@ -70,7 +69,8 @@
           </ul>
         </div>
         <div>
-          <h3>طرف قرارداد با</h3>
+          <h3>{{ this.footerColumn4 }}</h3>
+          <!-- image footer -->
           <img
             width="20"
             height="20"
@@ -103,9 +103,9 @@
         </div>
       </div>
       <!-- copyright section -->
-      <div class="border-right-1">
-        <p class="border-solid border-none border-top-1 py-4 pr-4">
-          © 2023 mobina jafari
+      <div class="">
+        <p class="border-solid border-top-1 py-4 pr-4 border-none">
+          {{ this.footerCopyRight }}
         </p>
       </div>
     </div>
