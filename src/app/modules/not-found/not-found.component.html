@@ -1,14 +1,11 @@
 <div
   class="flex flex-column justify-content-center align-items-center w-full p-8"
 >
-  <h1 class="my-2 text-lg">ERROR 404</h1>
-  <h2 class="my-2 text-lg">NOT FOUND</h2>
-  <p class="mt-3 mb-1 text-md">صفحه مورد نظر یافت نشد</p>
-  <p class="my-1 text-md">ممکن است این صفحه حذف شده یا در حال تعمیر باشد ...</p>
-  <button
-    class="my-3 p-2 border-round-md cursor-pointer border-1"
-    (click)="onChangeRoute()"
-  >
-    بازگشت به خانه
+  <h1 class="my-2 text-lg">{{ this.notFoundTitle1 }}</h1>
+  <h2 class="my-2 text-lg">{{ this.notFoundTitle2 }}</h2>
+  <p class="mt-3 mb-1 text-md">{{ this.notFoundDescription1 }}</p>
+  <p class="my-1 text-md">{{ this.notFoundDescription2 }}</p>
+  <button class="my-3 p-2 border-round-md cursor-pointer border-1">
+    {{ this.notFoundButton }}
   </button>
 </div>
