@@ -1,3 +1,5 @@
+import { IComments } from './comment';
+
 export interface IProducts {
   id: number;
   category: string;
@@ -9,10 +11,4 @@ export interface IProducts {
   images: undefined | string[] | number[];
   comments: undefined | IComments[];
   videoUrls: undefined | string[];
-}
-
-export interface IComments {
-  title: string;
-  comment: string;
-  feedback: number;
 }
