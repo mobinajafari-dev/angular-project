@@ -14,6 +14,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductsComponent } from './products/products.component';
     BodyComponent,
     FooterComponent,
     ProductsComponent,
+    ContactUsComponent,
   ],
 
   imports: [

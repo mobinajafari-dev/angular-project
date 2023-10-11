@@ -10,5 +10,4 @@ export interface IProducts {
   description: string;
   images: undefined | string[] | number[];
   comments: undefined | IComments[];
-  videoUrls: undefined | string[];
 }

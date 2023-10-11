@@ -1,3 +1,9 @@
+<form [formGroup]="indexFormGroup">
+  <div formControlName="firstparasm"></div>
+  <div formGroupName="firstNested">
+    <div formGroupName="secondNested"></div>
+  </div>
+</form>
 <section class="flex justify-content-evenly align-items-start p-2 m-2">
   <!-- product image -->
   <img src="assets/images/product.jpg" alt="product" class="w-5" />
@@ -16,7 +22,17 @@
 
     <!-- product size and color -->
 
-    <div class="py-3 mb-2 w-full">product size and color</div>
+    <div class="py-3 mb-2 w-full flex align-items-center">
+      <p-button
+        label="{{ shoppingCardButton }}"
+        styleClass="p-button-raised p-button-text p-button-secondary p-2 m-1 mx-2"
+      ></p-button>
+      <p-button
+        icon="pi pi-heart"
+        styleClass="p-button-rounded p-button-secondary p-button-text p-button-raised mx-2"
+      ></p-button>
+      <p class="mx-1 text-sm">اضافه کردن به علاقه مندی ها</p>
+    </div>
 
     <p-divider styleClass="w-full mx-auto my-2"></p-divider>
 
@@ -88,30 +104,33 @@
     class="flex align-items-center my-3 p-2 w-full justify-content-center text-black"
   >
     <!-- product tab -->
-
-    <div class="card">
-      <p-tabMenu
-        [model]="items"
-        [activeItem]="activeItem"
-        class="px-3"
-      ></p-tabMenu>
+    <div class="flex flex-column align-items-center justify-content-center">
+      <ul class="flex">
+        <li
+          *ngFor="let tab of menuTabs; let i = index"
+          [ngClass]="{ active: activeTabIndex === i }"
+          (click)="setActiveTab(i)"
+          class="px-4 text-xl cursor-pointer"
+        >
+          {{ tab.label }}
+        </li>
+      </ul>
+      <div class="text-center p-4 m-1 text-md">
+        <ng-container *ngFor="let tab of menuTabs; let i = index">
+          <div *ngIf="activeTabIndex === i">
+            {{ tab.content }}
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
+
+  <p-divider styleClass="w-10 mx-auto"></p-divider>
+  <section>comments</section>
 
   <p-divider styleClass="w-10 mx-auto"></p-divider>
 
   <!-- post -->
 
   <div>post</div>
-</section>
-<section>
-  <div>
-    <ng-template>videos</ng-template>
-  </div>
-
-  <p-divider styleClass="w-10 mx-auto"></p-divider>
-
-  <!-- product post section -->
-
-  <div>product post section</div>
 </section>

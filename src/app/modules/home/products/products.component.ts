@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IProducts } from '@shared';
-import { IComments } from '@shared';
-import { MenuItem } from 'primeng/api';
+import { TabMenu } from 'primeng/tabmenu';
 
 @Component({
   selector: 'products-us',
@@ -10,23 +10,32 @@ import { MenuItem } from 'primeng/api';
 })
 export class ProductsComponent implements OnInit {
   // definitions
+  activeTabIndex = 0;
+  shoppingCardButton: string = 'اضافه کردن به سبد خرید';
+  productCommentButton: string = 'ارسال نظر';
+  productSendComment: string = 'ثبت نظر';
+  countValue: number = 0;
+  productIconSize: number = 22;
 
   value!: number;
   valueUsername: string | undefined;
-  activeItem: MenuItem | undefined;
-  items: MenuItem[] | undefined;
-  productInfo: IProducts;
   toggleComment: boolean = false;
+  productInfo: IProducts;
 
-  productCommentButton: string = 'ارسال نظر';
-  productSendComment: string = 'ثبت نظر';
+  indexFormGroup!: FormGroup;
+
+  menuTabs: { label: string; content: string }[];
 
   onToggleComment(): boolean {
     console.log(this.toggleComment);
     return (this.toggleComment = !this.toggleComment);
   }
 
-  constructor() {
+  setActiveTab(index: number) {
+    this.activeTabIndex = index;
+  }
+
+  constructor(private formBuilder: FormBuilder) {
     // product information``````````````````````````````````````````````````````````````````````````````````````````````````
     this.productInfo = {
       id: 1,
@@ -38,23 +47,34 @@ export class ProductsComponent implements OnInit {
       description: 'لورم اپیسوم',
       images: [],
       comments: [],
-      videoUrls: [],
     };
-
+    this.indexFormGroup = formBuilder.group({
+      firstparasm: new FormControl(),
+      firstNested: formBuilder.group({
+        secondNested: formBuilder.group({}),
+      }),
+    });
     // tab menu
+    this.menuTabs = [
+      {
+        label: 'نحوه ارسال',
+        content:
+          'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و نحوه ارسال',
+      },
+      {
+        label: 'گارانتی',
+        content:
+          'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و گارانتی',
+      },
+      {
+        label: 'توضیحات',
+        content:
+          'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و توضیحات',
+      },
+    ];
   }
 
-  ngOnInit() {
-    this.items = [
-      { label: 'نحوه ارسال' },
-      { label: 'کامنت' },
-      { label: 'گارانتی محصول' },
-      { label: 'توضیحات' },
-    ];
-    this.activeItem = this.items[0];
-  }
+  ngOnInit() {}
 
   // icon size
-
-  productIconSize: number = 22;
 }
