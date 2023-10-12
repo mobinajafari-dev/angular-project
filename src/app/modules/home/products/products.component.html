@@ -1,9 +1,3 @@
-<form [formGroup]="indexFormGroup">
-  <div formControlName="firstparasm"></div>
-  <div formGroupName="firstNested">
-    <div formGroupName="secondNested"></div>
-  </div>
-</form>
 <section class="flex justify-content-evenly align-items-start p-2 m-2">
   <!-- product image -->
   <img src="assets/images/product.jpg" alt="product" class="w-5" />
@@ -31,7 +25,7 @@
         icon="pi pi-heart"
         styleClass="p-button-rounded p-button-secondary p-button-text p-button-raised mx-2"
       ></p-button>
-      <p class="mx-1 text-sm">اضافه کردن به علاقه مندی ها</p>
+      <p class="mx-1 text-sm">{{ whishlistButtonContent }}</p>
     </div>
 
     <p-divider styleClass="w-full mx-auto my-2"></p-divider>
@@ -78,22 +72,10 @@
         <p-button
           label="{{ productCommentButton }}"
           styleClass="p-button-raised p-button-text p-button-secondary p-2 m-1"
-          (onClick)="onToggleComment()"
+          (click)="scrollToComment()"
         ></p-button>
       </div>
     </div>
-    <ng-container *ngIf="this.toggleComment" class="w-full flex flex-column">
-      <span class="p-float-label">
-        <input pInputText id="username" [(ngModel)]="valueUsername" />
-        <label htmlFor="username">Username</label>
-      </span>
-      <p-rating [(ngModel)]="value" [cancel]="false"></p-rating>
-      <p-button
-        label="{{ productSendComment }}"
-        styleClass="p-button-raised p-button-text p-button-secondary p-1 mx-auto my-2"
-        (onClick)="onToggleComment()"
-      ></p-button>
-    </ng-container>
   </div>
 </section>
 
@@ -104,13 +86,14 @@
     class="flex align-items-center my-3 p-2 w-full justify-content-center text-black"
   >
     <!-- product tab -->
-    <div class="flex flex-column align-items-center justify-content-center">
+    <div class="flex flex-column align-items-center justify-content-center m-1">
       <ul class="flex">
         <li
           *ngFor="let tab of menuTabs; let i = index"
           [ngClass]="{ active: activeTabIndex === i }"
           (click)="setActiveTab(i)"
-          class="px-4 text-xl cursor-pointer"
+          class="p-3 text-xl cursor-pointer menuTab"
+          [ngClass]="{ activatedTab: true, active: activeTabIndex === i }"
         >
           {{ tab.label }}
         </li>
@@ -126,11 +109,53 @@
   </div>
 
   <p-divider styleClass="w-10 mx-auto"></p-divider>
-  <section>comments</section>
+  <section id="comment">
+    <!-- comments -->
+    <h3 class="w-full text-center my-5">نظرات</h3>
+    <div class="flex m-1 text-center justify-content-center align-items-center">
+      <div></div>
+      <div>
+        <h4 class="my-4">ارسال نظر</h4>
+        <form [formGroup]="commentForm" class="flex flex-column">
+          <p-rating formControlName="rating" [cancel]="false"></p-rating>
+          <input
+            type="text"
+            formControlName="username"
+            pInputText
+            placeholder="نام کاربری"
+            class="px-3 py-2 m-2"
+          />
+          <input
+            type="text"
+            formControlName="email"
+            pInputText
+            placeholder="ایمیل"
+            class="px-3 py-2 m-2"
+          />
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            [autoResize]="true"
+            formControlName="comment"
+            placeholder="لطفا نظر خود را در اینجا تایپ کنید"
+            class="px-3 py-2 m-2"
+          ></textarea>
+        </form>
+        <p-button
+          label="{{ productSendComment }}"
+          styleClass="p-button-raised p-button-text p-button-secondary p-1 mx-auto my-2"
+        ></p-button>
+      </div>
+    </div>
+  </section>
 
   <p-divider styleClass="w-10 mx-auto"></p-divider>
 
   <!-- post -->
 
-  <div>post</div>
+  <div>
+    <h3 class="w-full text-center my-5">محصولات مشابه</h3>
+    <div></div>
+  </div>
 </section>

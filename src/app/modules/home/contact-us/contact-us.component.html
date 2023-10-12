@@ -2,9 +2,72 @@
 <p class="w-full text-center my-4">
   {{ contactUsDescription }}
 </p>
-<section class="flex flex-column align-items-center">
+<section class="flex flex-column align-items-center w-full">
+  <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="">
+    <div formGroupName="userData" class="my-3 w-full">
+      <input
+        type="text"
+        formControlName="userFirstName"
+        pInputText
+        class="m-2 px-3 py-2"
+        placeholder="نام"
+      />
+      <input
+        type="text"
+        formControlName="userLastName"
+        pInputText
+        class="m-2 px-3 py-2"
+        placeholder="نام خانوادگی"
+      />
+    </div>
+
+    <div formGroupName="userContact" class="my-3">
+      <input
+        formControlName="userPhone"
+        class="m-2 px-3 py-2"
+        pInputText
+        placeholder="شماره همراه"
+      />
+      <input
+        type="email"
+        formControlName="userEmail"
+        pInputText
+        class="m-2 px-3 py-2"
+        placeholder="ایمیل"
+      />
+    </div>
+
+    <div formGroupName="userComment" class="flex flex-column my-3">
+      <input
+        type="text"
+        formControlName="topic"
+        pInputText
+        class="m-2 px-3 py-2"
+        placeholder="عنوان"
+      />
+      <textarea
+        class="m-2 px-3 py-2"
+        rows="5"
+        cols="30"
+        formControlName="comment"
+        pInputTextarea
+        [autoResize]="true"
+        placeholder="کامنت مورد نظر خود را در اینجا تایپ کنید"
+      ></textarea>
+    </div>
+  </form>
+
+  <!-- <form [formGroup]="indexFormGroup">
+  <div formControlName="firstparasm"></div>
+  <div formGroupName="firstNested">
+    <div formGroupName="secondNested"></div>
+  </div>
+</form> -->
+
   <p-button
     label="ثبت فرم"
     styleClass="p-button-raised p-button-text p-button-secondary px-2 py-1 text-center m-3"
+    (onClick)="onSubmit()"
   ></p-button>
 </section>
+<!--توی کانتکت آس از روش سلمانی برو توی پروداکت پیج از روش کورس برو-->

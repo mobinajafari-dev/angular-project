@@ -1,0 +1,16 @@
+.menuTab {
+  &:hover {
+    color: #999;
+  }
+}
+
+.activatedTab {
+  /* Add your default styling for the tab */
+  /* ... */
+}
+
+.activatedTab.active {
+  /* Add your special styling for the active tab */
+  font-weight: bold;
+  /* ... */
+}

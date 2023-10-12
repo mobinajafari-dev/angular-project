@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  RequiredValidator,
+  Validators,
+} from '@angular/forms';
 import { IProducts } from '@shared';
 import { TabMenu } from 'primeng/tabmenu';
 
@@ -9,52 +15,47 @@ import { TabMenu } from 'primeng/tabmenu';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  // definitions
+  // definitions of variables
+  productInfo: IProducts;
   activeTabIndex = 0;
   shoppingCardButton: string = 'اضافه کردن به سبد خرید';
   productCommentButton: string = 'ارسال نظر';
   productSendComment: string = 'ثبت نظر';
-  countValue: number = 0;
-  productIconSize: number = 22;
+  whishlistButtonContent: string = 'اضافه کردن به علاقه مندی ها';
 
   value!: number;
   valueUsername: string | undefined;
-  toggleComment: boolean = false;
-  productInfo: IProducts;
 
-  indexFormGroup!: FormGroup;
+  // icon size
+
+  productIconSize: number = 22;
+
+  // form definitions
+
+  commentForm!: FormGroup;
 
   menuTabs: { label: string; content: string }[];
 
-  onToggleComment(): boolean {
-    console.log(this.toggleComment);
-    return (this.toggleComment = !this.toggleComment);
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private elementRef: ElementRef
+  ) {
+    // product information
 
-  setActiveTab(index: number) {
-    this.activeTabIndex = index;
-  }
-
-  constructor(private formBuilder: FormBuilder) {
-    // product information``````````````````````````````````````````````````````````````````````````````````````````````````
     this.productInfo = {
       id: 1,
       title: 'لورم اپیسوم',
       price: 100000000,
       category: 'دکوراسیون',
       colors: ['آبی'],
-      sizes: ['xs'],
+      sizes: ['xs', 'sm', 'md'],
       description: 'لورم اپیسوم',
       images: [],
       comments: [],
     };
-    this.indexFormGroup = formBuilder.group({
-      firstparasm: new FormControl(),
-      firstNested: formBuilder.group({
-        secondNested: formBuilder.group({}),
-      }),
-    });
+
     // tab menu
+
     this.menuTabs = [
       {
         label: 'نحوه ارسال',
@@ -74,7 +75,25 @@ export class ProductsComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {}
+  // life cycle methods
 
-  // icon size
+  ngOnInit() {
+    this.commentForm = new FormGroup({
+      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      comment: new FormControl(null, Validators.required),
+      rating: new FormControl(null, Validators.required),
+    });
+  }
+
+  // functions
+
+  scrollToComment() {
+    const element = this.elementRef.nativeElement.querySelector('#comment');
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  setActiveTab(index: number) {
+    this.activeTabIndex = index;
+  }
 }
