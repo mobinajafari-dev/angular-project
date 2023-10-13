@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from '@shared';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -16,6 +17,7 @@ import { NotFoundComponent } from './modules/not-found/not-found.component';
     SharedModule,
     HomeModule,
     BrowserAnimationsModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

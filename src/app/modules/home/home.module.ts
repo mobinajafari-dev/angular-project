@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
 
-import { GalleriaModule } from 'primeng/galleria';
 import { ButtonModule } from 'primeng/button';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { RatingModule } from 'primeng/rating';
@@ -31,7 +30,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     HomeRoutingModule,
     SharedModule,
     CommonModule,
-    TabMenuModule,
     RatingModule,
   ],
   exports: [
@@ -40,9 +38,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     FooterComponent,
     CommonModule,
     SharedModule,
-    GalleriaModule,
     ButtonModule,
-    TabMenuModule,
     RatingModule,
   ],
 })
