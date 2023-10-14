@@ -1,0 +1,5 @@
+@import "/src/global-styles.scss";
+
+.comment-wrapper {
+  @include box-shadow(0.2);
+}

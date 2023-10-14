@@ -1,4 +1,4 @@
-import { IComments } from './comment';
+import { IComment } from './comment';
 
 export interface IProducts {
   id: number;
@@ -9,5 +9,5 @@ export interface IProducts {
   sizes: string[];
   description: string;
   images: undefined | string[] | number[];
-  comments: undefined | IComments[];
+  comments: undefined | IComment[];
 }

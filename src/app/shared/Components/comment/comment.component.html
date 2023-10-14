@@ -1,0 +1,97 @@
+<h3 class="w-full my-5 text-center">{{ commentTitle }}</h3>
+<div class="flex justify-content-evenly align-items-start">
+  <div class="flex flex-column">
+    <div
+      *ngFor="let comment of comments"
+      class="flex align-items-center my-2 comment-wrapper border-round-md p-2 m-s"
+    >
+      <img
+        src="{{ this.comment.profile }}"
+        alt="comment-profile"
+        height="50"
+        width="50"
+        class="m-2"
+      />
+      <div>
+        <h3>{{ this.comment.username }}</h3>
+        <p>{{ this.comment.content }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <h4 class="mb-4 text-center w-full">{{ setCommentTitle }}</h4>
+    <form [formGroup]="commentForm" class="flex flex-column">
+      <input
+        type="text"
+        formControlName="username"
+        pInputText
+        placeholder="{{ setCommentUsernameInput }}"
+        class="px-3 py-2 m-2"
+      />
+      <div
+        *ngIf="
+          commentForm.get('username')?.invalid &&
+          commentForm.get('username')?.touched
+        "
+      >
+        <span
+          class="error-message m-2"
+          *ngIf="commentForm.get('username')?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+      </div>
+      <input
+        type="text"
+        formControlName="email"
+        pInputText
+        placeholder="{{ setCommentEmailInput }}"
+        class="px-3 py-2 m-2"
+      />
+      <div
+        *ngIf="
+          commentForm.get('email')?.invalid && commentForm.get('email')?.touched
+        "
+      >
+        <span
+          *ngIf="commentForm.get('email')?.errors?.['required']"
+          class="error-message m-2"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          *ngIf="commentForm.get('email')?.errors?.['email']"
+          class="error-message m-2"
+          >{{ emailErrorMessage }}</span
+        >
+      </div>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        [autoResize]="true"
+        formControlName="content"
+        placeholder="{{ setCommentTextareaInput }}"
+        class="px-3 py-2 m-2"
+      ></textarea>
+      <div
+        *ngIf="
+          (commentForm.get('content')?.invalid &&
+            commentForm.get('content')?.touched) ||
+          commentForm.get('content')?.dirty
+        "
+      >
+        <span
+          *ngIf="commentForm.get('content')?.errors?.['required']"
+          class="error-message m-2"
+          >{{ requiredErrorMessage }}</span
+        >
+      </div>
+    </form>
+    <p-button
+      label="{{ setCommentButton }}"
+      styleClass="w-full py-2 px-3 mx-auto my-2"
+      severity="secondary"
+      [raised]="true"
+      [text]="true"
+    ></p-button>
+  </div>
+</div>

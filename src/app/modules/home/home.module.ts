@@ -3,10 +3,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
 
-import { ButtonModule } from 'primeng/button';
-import { TabMenuModule } from 'primeng/tabmenu';
-import { RatingModule } from 'primeng/rating';
-
 import { HomeComponent } from './home.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeRoutingModule } from './home-routing.module';
@@ -25,21 +21,13 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ContactUsComponent,
   ],
 
-  imports: [
-    RouterModule,
-    HomeRoutingModule,
-    SharedModule,
-    CommonModule,
-    RatingModule,
-  ],
+  imports: [RouterModule, HomeRoutingModule, SharedModule, CommonModule],
   exports: [
     HomeComponent,
     MenuComponent,
     FooterComponent,
     CommonModule,
     SharedModule,
-    ButtonModule,
-    RatingModule,
   ],
 })
 export class HomeModule {}

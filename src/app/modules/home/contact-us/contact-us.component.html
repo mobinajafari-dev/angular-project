@@ -10,7 +10,7 @@
         formControlName="userFirstName"
         pInputText
         class="m-2 px-3 py-2"
-        placeholder="نام"
+        placeholder="{{ firstNameInput }}"
       />
 
       <input
@@ -18,7 +18,7 @@
         formControlName="userLastName"
         pInputText
         class="m-2 px-3 py-2"
-        placeholder="نام خانوادگی"
+        placeholder="{{ lastNameInput }}"
       />
     </div>
 
@@ -27,14 +27,14 @@
         formControlName="userPhone"
         class="m-2 px-3 py-2"
         pInputText
-        placeholder="شماره همراه"
+        placeholder="{{ phoneInput }}"
       />
       <input
         type="email"
         formControlName="userEmail"
         pInputText
         class="m-2 px-3 py-2"
-        placeholder="ایمیل"
+        placeholder="{{ emailInput }}"
       />
     </div>
 
@@ -44,31 +44,30 @@
         formControlName="topic"
         pInputText
         class="m-2 px-3 py-2"
-        placeholder="عنوان"
+        placeholder="{{ topicInput }}"
       />
       <textarea
         class="m-2 px-3 py-2"
         rows="5"
         cols="30"
-        formControlName="comment"
+        formControlName="content"
         pInputTextarea
         [autoResize]="true"
-        placeholder="کامنت مورد نظر خود را در اینجا تایپ کنید"
+        placeholder="{{ commentInput }}"
       ></textarea>
     </div>
   </form>
 
-  <!-- <form [formGroup]="indexFormGroup">
-  <div formControlName="firstparasm"></div>
-  <div formGroupName="firstNested">
-    <div formGroupName="secondNested"></div>
-  </div>
-</form> -->
-
   <p-button
-    label="ثبت فرم"
+    label="{{ contactUsButton }}"
     styleClass="p-button-raised p-button-text p-button-secondary px-2 py-1 text-center m-3"
     (onClick)="onSubmit()"
   ></p-button>
 </section>
-<!--توی کانتکت آس از روش سلمانی برو توی پروداکت پیج از روش کورس برو-->
+
+<!-- <form [formGroup]="indexFormGroup">
+<div formControlName="firstparasm"></div>
+<div formGroupName="firstNested">
+  <div formGroupName="secondNested"></div>
+</div>
+</form> -->

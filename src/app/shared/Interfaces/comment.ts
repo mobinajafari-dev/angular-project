@@ -1,5 +1,5 @@
-export interface IComments {
-  title: string;
+export interface IComment {
+  username: string;
   content: string;
-  profile: number;
+  profile: number | string;
 }

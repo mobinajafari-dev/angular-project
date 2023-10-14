@@ -7,11 +7,12 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { TabMenuModule } from 'primeng/tabmenu';
-// import { PostComponent } from './Components/shared-component.api';
+import { PasswordModule } from 'primeng/password';
+import { CommentComponent } from './Components/shared-component.api';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
-  declarations: [],
+  declarations: [CommentComponent],
   imports: [
     CommonModule,
     ButtonModule,
@@ -21,7 +22,6 @@ import { TabMenuModule } from 'primeng/tabmenu';
     ReactiveFormsModule,
     InputTextModule,
     InputNumberModule,
-    TabMenuModule,
   ],
   exports: [
     ButtonModule,
@@ -32,7 +32,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
     ReactiveFormsModule,
     InputTextModule,
     InputNumberModule,
-    TabMenuModule,
+    PasswordModule,
+    CommentComponent,
+    RatingModule,
   ],
 })
 export class SharedModule {}
