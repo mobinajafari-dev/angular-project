@@ -1,4 +1,39 @@
 <div>
-  <h2>ثبت نام</h2>
-  <form></form>
+  <h2>{{ registerTitle }}</h2>
+  <form [formGroup]="registerForm">
+    <div formGroupName="userData">
+      <input
+        type="text"
+        formControlName="firstName"
+        placeholder="{{ firstNameInput }}"
+        pInputText
+      />
+      <input
+        pInputText
+        type="text"
+        formControlName="lastName"
+        placeholder="{{ lastNameInput }}"
+      />
+    </div>
+    <div formGroupName="userContact">
+      <input
+        pInputText
+        type="email"
+        placeholder="{{ emailInput }}"
+        formControlName="email"
+      />
+      <input
+        pInputText
+        type="text"
+        placeholder="{{ phoneInput }}"
+        formControlName="phone"
+      />
+    </div>
+    <input
+      pInputText
+      type="password"
+      placeholder="{{ passwordInput }}"
+      formControlName="password"
+    />
+  </form>
 </div>

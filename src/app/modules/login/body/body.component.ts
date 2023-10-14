@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login-body',
   templateUrl: './body.component.html',
-  styles: [],
+  styleUrls: ['./body.component.scss'],
 })
 export class BodyComponent implements OnInit {
   // definition
