@@ -1,39 +1,196 @@
-<div>
-  <h2>{{ registerTitle }}</h2>
-  <form [formGroup]="registerForm">
-    <div formGroupName="userData">
+<div class="w-full p-5 mx-auto text-center">
+  <h2 class="text-center">{{ registerTitle }}</h2>
+  <form [formGroup]="registerForm" class="m-5">
+    <div
+      formGroupName="userData"
+      class="flex justify-content-center align-items-center"
+    >
+      <!-- first name input -->
       <input
         type="text"
         formControlName="firstName"
         placeholder="{{ firstNameInput }}"
         pInputText
+        class="py-2 px-3 w-5 m-2"
+        autofocus
       />
+      <!-- last name input -->
       <input
         pInputText
+        class="py-2 px-3 w-5 m-2"
         type="text"
         formControlName="lastName"
         placeholder="{{ lastNameInput }}"
       />
     </div>
-    <div formGroupName="userContact">
+    <div class="flex">
+      <!-- first name validation -->
+      <div
+        class="w-5"
+        *ngIf="
+          registerForm.get(['userData', 'firstName'])?.invalid &&
+          registerForm.get(['userData', 'firstName'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="
+      registerForm.get(['userData', 'firstName'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="
+    registerForm.get(['userData', 'firstName'])?.errors?.['minlength']"
+          >{{ minLengthErrorMessage }}</span
+        >
+      </div>
+      <!-- last name validation -->
+      <div
+        class="w-5"
+        *ngIf="
+          registerForm.get(['userData', 'lastName'])?.invalid &&
+          registerForm.get(['userData', 'lastName'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="
+      registerForm.get(['userData', 'lastName'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="
+    registerForm.get(['userData', 'lastName'])?.errors?.['minlength']"
+          >{{ minLengthErrorMessage }}</span
+        >
+      </div>
+    </div>
+    <div
+      formGroupName="userContact"
+      class="flex justify-content-center align-items-center"
+    >
+      <!-- email input -->
       <input
         pInputText
+        class="py-2 px-3 w-5 m-2"
         type="email"
         placeholder="{{ emailInput }}"
         formControlName="email"
       />
+      <!-- phone input -->
       <input
         pInputText
+        class="py-2 px-3 w-5 m-2"
         type="text"
         placeholder="{{ phoneInput }}"
         formControlName="phone"
       />
     </div>
-    <input
-      pInputText
-      type="password"
-      placeholder="{{ passwordInput }}"
-      formControlName="password"
-    />
+    <div class="flex">
+      <!-- email validation -->
+      <div
+        class="w-5"
+        *ngIf="
+          registerForm.get(['userContact', 'email'])?.invalid &&
+          registerForm.get(['userContact', 'email'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="
+      registerForm.get(['userContact', 'email'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="
+    registerForm.get(['userContact', 'email'])?.errors?.['email']"
+          >{{ emailErrorMessage }}</span
+        >
+      </div>
+      <!-- phone validation -->
+      <div
+        class="w-5"
+        *ngIf="
+          registerForm.get(['userContact', 'phone'])?.invalid &&
+          registerForm.get(['userContact', 'phone'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="
+      registerForm.get(['userContact', 'phone'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+      </div>
+    </div>
+    <div
+      formGroupName="userAddress"
+      class="flex justify-content-center align-items-start"
+    >
+      <div class="flex flex-column w-5 m-2">
+        <input
+          type="text"
+          pInputText
+          class="py-2 px-3 w-full"
+          placeholder="{{ postalCodeInput }}"
+          formControlName="postalCode"
+        />
+        <p-password
+          pInputText
+          styleClass=" my-2"
+          [toggleMask]="true"
+          type="password"
+          placeholder="{{ passwordInput }}"
+          formControlName="password"
+        ></p-password>
+        <div
+          class="w-5"
+          *ngIf="
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+          "
+        >
+          <span
+            class="error-message"
+            *ngIf="
+        registerForm.get('password')?.errors?.['required']"
+            >{{ requiredErrorMessage }}</span
+          >
+          <span class="error-message">
+            *ngIf=" registerForm.get('password')?.errors?.['minlength']" >{{
+              requiredErrorMessage
+            }}</span
+          >
+        </div>
+      </div>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        [autoResize]="true"
+        formControlName="address"
+        placeholder="{{ addressInput }}"
+        class="px-3 py-2 m-2 w-5"
+      ></textarea>
+    </div>
   </form>
+  <p-button
+    label="{{ registerButton }}"
+    [text]="true"
+    [raised]="true"
+    severity="secondary"
+    styleClass="px-3 py-2 col-4 mb-5"
+  ></p-button>
+  <p-divider class="py-5 my-5"></p-divider>
+  <div
+    *ngFor="let registerLink of registerLinks"
+    class="inline-block px-4 mt-2"
+  >
+    <a *ngFor="let index of registerLink.items" [routerLink]="index.path">{{
+      index.title
+    }}</a>
+  </div>
 </div>

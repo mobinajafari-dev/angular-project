@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IMenu } from '@shared';
 
 @Component({
   selector: 'app-forget-password',
@@ -14,6 +15,16 @@ export class ForgetPasswordComponent implements OnInit {
   emailInput: string = 'ایمیل';
   backToHomeButton: string = 'بازگشت به خانه';
   forgetPasswordButton: string = 'بازیابی رمز عبور';
+
+  // error messages
+
+  requiredErrorMessage: string = 'این فیلد الزامی است';
+  emailErrorMessage: string = 'ایمیل معتبر نیست';
+
+  forgetPasswordLinks: IMenu[] = [
+    { id: 1, items: [{ title: 'بازگشت به خانه', path: '/home' }] },
+    { id: 2, items: [{ title: 'ورود', path: '/login' }] },
+  ];
 
   forgetPasswordForm!: FormGroup;
 

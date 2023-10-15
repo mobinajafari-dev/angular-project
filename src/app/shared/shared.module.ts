@@ -10,9 +10,11 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { PasswordModule } from 'primeng/password';
 import { CommentComponent } from './Components/shared-component.api';
 import { RatingModule } from 'primeng/rating';
+import { CarouselModule } from 'primeng/carousel';
+import { PostComponent } from './Components/post/post.component';
 
 @NgModule({
-  declarations: [CommentComponent],
+  declarations: [CommentComponent, PostComponent],
   imports: [
     CommonModule,
     ButtonModule,
@@ -22,6 +24,7 @@ import { RatingModule } from 'primeng/rating';
     ReactiveFormsModule,
     InputTextModule,
     InputNumberModule,
+    CarouselModule,
   ],
   exports: [
     ButtonModule,
@@ -35,6 +38,8 @@ import { RatingModule } from 'primeng/rating';
     PasswordModule,
     CommentComponent,
     RatingModule,
+    CarouselModule,
+    PostComponent,
   ],
 })
 export class SharedModule {}

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
+  RequiredValidator,
   Validators,
 } from '@angular/forms';
 
@@ -21,9 +21,9 @@ export class ContactUsComponent implements OnInit {
 
   // error messages
 
-  requiredErrorMessage: string = 'نام خود را وارد کنید';
-  EmailErrorMessage: string = 'ایمیل معتبر نیست';
-  minLengthErrorMessage: string = 'باید حداقل 5 کاراکتر وارد شود';
+  requiredErrorMessage: string = 'این فیلد الزامی است';
+  emailErrorMessage: string = 'ایمیل معتبر نیست';
+  minLengthErrorMessage: string = 'باید حداقل 3 کاراکتر وارد شود';
   maxLengthErrorMessage: string = 'باید حداکثر 18 کاراکتر وارد شود';
 
   contactUsForm!: FormGroup;
@@ -90,8 +90,8 @@ export class ContactUsComponent implements OnInit {
   contactUsFormFunc(): void {
     this.contactUsForm = this.formBuilder.group({
       userData: this.formBuilder.group({
-        userFirstName: [null, [Validators.required, Validators.minLength(5)]],
-        userLastName: [null, [Validators.required, Validators.minLength(5)]],
+        userFirstName: [null, [Validators.required, Validators.minLength(3)]],
+        userLastName: [null, [Validators.required, Validators.minLength(3)]],
       }),
       userContact: this.formBuilder.group({
         userEmail: [null, [Validators.required, Validators.email]],

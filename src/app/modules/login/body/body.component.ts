@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IMenu } from '@shared';
 
 @Component({
   selector: 'app-login-body',
@@ -14,10 +15,19 @@ export class BodyComponent implements OnInit {
   emailInput: string = 'ایمیل';
   passwordInput: string = 'رمز عبور';
 
-  loginLinks: { title: string; path: string }[] = [
-    { title: 'ثبت نام', path: '/login/register' },
-    { title: 'فراموشی رمز عبور', path: '/login/forget-password' },
+  loginLinks: IMenu[] = [
+    { id: 1, items: [{ title: 'ثبت نام', path: '/login/register' }] },
+    {
+      id: 2,
+      items: [{ title: 'فراموشی رمز عبور', path: '/login/forget-password' }],
+    },
   ];
+
+  // error messages
+
+  requiredErrorMessage: string = 'این فیلد الزامی است';
+  emailErrorMessage: string = 'ایمیل معتبر نیست';
+  passwordErrorMessage: string = 'رمز معتبر نیست';
 
   constructor(private formBuilder: FormBuilder) {}
 

@@ -1,6 +1,7 @@
 export interface IPost {
-  title: string;
-  price: number;
-  whishlist: boolean;
-  category: string;
+  title: string | undefined;
+  imageURL: string | undefined;
+  price: number | undefined;
+  whishlist: boolean | undefined;
+  category: string | undefined;
 }

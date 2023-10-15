@@ -11,7 +11,22 @@
       pInputText
       placeholder="{{ emailInput }}"
       class="block m-2 p-2"
+      autofocus
     />
+    <div
+      *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+    >
+      <span
+        *ngIf="loginForm.get('email')?.errors?.['required']"
+        class="error-message"
+        >{{ requiredErrorMessage }}</span
+      >
+      <span
+        *ngIf="loginForm.get('email')?.errors?.['email']"
+        class="error-message"
+        >{{ emailErrorMessage }}</span
+      >
+    </div>
     <p-password
       [toggleMask]="true"
       styleClass="block m-2 p-2 password"
@@ -19,16 +34,39 @@
       styleClass="password-input"
       placeholder="{{ passwordInput }}"
     ></p-password>
+    <div
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+    >
+      <span
+        class="error-message"
+        *ngIf="loginForm.get('password')?.errors?.['required']"
+        >{{ requiredErrorMessage }}</span
+      >
+      <span
+        class="error-message"
+        *ngIf="loginForm.get('password')?.errors?.['minlength']"
+        >{{ passwordErrorMessage }}</span
+      >
+    </div>
   </form>
   <p-button
     label="{{ loginTitle }}"
-    styleClass="m-2 py-2 px-3"
+    styleClass="m-5 py-2 px-3"
     severity="secondary"
     [raised]="true"
     [text]="true"
   ></p-button>
 </div>
 <p-divider styleClass="my-4 w-9 mx-auto"></p-divider>
-<div class="text-center" *ngFor="let loginLink of loginLinks">
-  <a routerLink="{{ loginLink.path }}" class="px-3">{{ loginLink.title }}</a>
+<div class="mx-auto text-center">
+  <div class="inline-block" *ngFor="let loginLink of loginLinks">
+    <a
+      *ngFor="let index of loginLink.items"
+      routerLink="{{ index.path }}"
+      class="inline-block px-4 mt-2"
+      >{{ index.title }}</a
+    >
+  </div>
 </div>

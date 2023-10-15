@@ -3,11 +3,9 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  RequiredValidator,
   Validators,
 } from '@angular/forms';
 import { IProducts } from '@shared';
-import { TabMenu } from 'primeng/tabmenu';
 
 @Component({
   selector: 'products-us',
@@ -78,12 +76,7 @@ export class ProductsComponent implements OnInit {
   // life cycle methods
 
   ngOnInit() {
-    this.commentForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      comment: new FormControl(null, Validators.required),
-      rating: new FormControl(null, Validators.required),
-    });
+    this.commentFormFunc();
   }
 
   // functions
@@ -95,5 +88,14 @@ export class ProductsComponent implements OnInit {
 
   setActiveTab(index: number) {
     this.activeTabIndex = index;
+  }
+
+  commentFormFunc() {
+    this.commentForm = new FormGroup({
+      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      comment: new FormControl(null, Validators.required),
+      rating: new FormControl(null, Validators.required),
+    });
   }
 }

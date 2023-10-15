@@ -4,15 +4,15 @@
 </p>
 <section class="flex flex-column align-items-center w-full">
   <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="">
-    <div formGroupName="userData" class="my-3 w-full">
+    <div formGroupName="userData" class="w-full">
       <input
         type="text"
         formControlName="userFirstName"
         pInputText
         class="m-2 px-3 py-2"
         placeholder="{{ firstNameInput }}"
+        autofocus
       />
-
       <input
         type="text"
         formControlName="userLastName"
@@ -22,7 +22,45 @@
       />
     </div>
 
-    <div formGroupName="userContact" class="my-3">
+    <div class="flex">
+      <div
+        *ngIf="
+          contactUsForm.get(['userData', 'userFirstName'])?.invalid &&
+          contactUsForm.get(['userData', 'userFirstName'])?.touched
+        "
+        class="w-full"
+      >
+        <span
+          *ngIf="contactUsForm.get(['userData', 'userFirstName'])?.errors?.['required']"
+          class="error-message absoloute top-0"
+          >{{ this.requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userData', 'userFirstName'])?.errors?.['minlength']"
+          >{{ this.minLengthErrorMessage }}</span
+        >
+      </div>
+      <div
+        class="w-full"
+        *ngIf="
+          contactUsForm.get(['userData', 'userLastName'])?.invalid &&
+          contactUsForm.get(['userData', 'userLastName'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userData','userLastName'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userData','userLastName'])?.errors?.['minlength']"
+          >{{ minLengthErrorMessage }}</span
+        >
+      </div>
+    </div>
+    <div formGroupName="userContact" class="">
       <input
         formControlName="userPhone"
         class="m-2 px-3 py-2"
@@ -36,6 +74,44 @@
         class="m-2 px-3 py-2"
         placeholder="{{ emailInput }}"
       />
+    </div>
+    <div class="flex">
+      <div
+        class="w-full"
+        *ngIf="
+          contactUsForm.get(['userContact', 'userPhone'])?.invalid &&
+          contactUsForm.get(['userContact', 'userPhone'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userContact','userPhone'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userContact','userPhone'])?.errors?.['maxlength']"
+          >{{ maxLengthErrorMessage }}</span
+        >
+      </div>
+      <div
+        class="w-full"
+        *ngIf="
+          contactUsForm.get(['userContact', 'userEmail'])?.invalid &&
+          contactUsForm.get(['userContact', 'userEmail'])?.touched
+        "
+      >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userContact', 'userEmail'])?.errors?.['required']"
+          >{{ requiredErrorMessage }}</span
+        >
+        <span
+          class="error-message"
+          *ngIf="contactUsForm.get(['userContact','userEmail'])?.errors?.['email']"
+          >{{ emailErrorMessage }}</span
+        >
+      </div>
     </div>
 
     <div formGroupName="userComment" class="flex flex-column my-3">
@@ -56,12 +132,28 @@
         placeholder="{{ commentInput }}"
       ></textarea>
     </div>
+    <div
+      class="w-full"
+      *ngIf="
+        contactUsForm.get(['userComment', 'content'])?.invalid &&
+        contactUsForm.get(['userComment', 'content'])?.touched
+      "
+    >
+      <span
+        class="error-message"
+        *ngIf="contactUsForm.get(['userComment','content'])?.errors?.['required']"
+        >{{ requiredErrorMessage }}</span
+      >
+    </div>
   </form>
 
   <p-button
     label="{{ contactUsButton }}"
-    styleClass="p-button-raised p-button-text p-button-secondary px-2 py-1 text-center m-3"
+    styleClass="px-2 py-1 text-center m-2"
     (onClick)="onSubmit()"
+    severity="secondary"
+    [raised]="true"
+    [text]="true"
   ></p-button>
 </section>
 
