@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { IMenu } from '@shared';
 
 @Component({
@@ -19,6 +24,11 @@ export class RegisterComponent implements OnInit {
   emailErrorMessage: string = 'ایمیل معتبر نیست';
   passwordErrorMessage: string = 'رمز معتبر نیست';
   minLengthErrorMessage: string = 'باید حداقل 3 کاراکتر وارد شود';
+  passwordValidationMessage: string = '';
+  firstNameValidationMessage: string = '';
+  lastNameValidationMessage: string = '';
+  phoneValidationMessage: string = '';
+  emailValidationMessage: string = '';
 
   // input placeholder
   emailInput: string = 'ایمیل';
@@ -37,8 +47,13 @@ export class RegisterComponent implements OnInit {
       { id: 2, items: [{ title: 'ورود  ', path: '/login' }] },
     ];
   }
-  ngOnInit(): void {
+  ngOnInit() {
     this.registerFormFunc();
+    this.firstNameValidate();
+    this.lastNameValidate();
+    this.phoneValidate();
+    this.emailValidate();
+    this.passwordValidate();
   }
 
   // functions
@@ -58,6 +73,111 @@ export class RegisterComponent implements OnInit {
         address: [null],
         postalCode: [null],
       }),
+    });
+  }
+  // first name validation
+
+  validateFirstNameControl(firstNameControl: FormControl) {
+    this.firstNameValidationMessage;
+    if (
+      (firstNameControl.errors && firstNameControl.touched) ||
+      firstNameControl.dirty
+    ) {
+      if (firstNameControl.errors?.['required']) {
+        this.firstNameValidationMessage = this.requiredErrorMessage;
+      } else if (firstNameControl.errors?.['minlength']) {
+        this.firstNameValidationMessage = this.minLengthErrorMessage;
+      }
+    }
+  }
+
+  firstNameValidate() {
+    const firstNameControl = this.registerForm.get(['userData', 'firstName']);
+    firstNameControl?.valueChanges?.subscribe((x) => {
+      this.validateFirstNameControl(firstNameControl as FormControl);
+    });
+  }
+  // last name validation
+
+  validatelastNameControl(lastNameControl: FormControl) {
+    this.lastNameValidationMessage;
+    if (
+      (lastNameControl.errors && lastNameControl.touched) ||
+      lastNameControl.dirty
+    ) {
+      if (lastNameControl.errors?.['required']) {
+        this.lastNameValidationMessage = this.requiredErrorMessage;
+      } else if (lastNameControl.errors?.['minlength']) {
+        this.lastNameValidationMessage = this.minLengthErrorMessage;
+      }
+    }
+  }
+
+  lastNameValidate() {
+    const lastNameControl = this.registerForm.get(['userData', 'lastName']);
+    lastNameControl?.valueChanges?.subscribe((x) => {
+      this.validatelastNameControl(lastNameControl as FormControl);
+    });
+  }
+
+  // phone validation
+
+  validatePhoneControl(phoneControl: FormControl) {
+    this.phoneValidationMessage;
+    if ((phoneControl.touched && phoneControl.errors) || phoneControl.dirty) {
+      if (phoneControl.errors?.['required']) {
+        this.phoneValidationMessage = this.requiredErrorMessage;
+      }
+    }
+  }
+
+  phoneValidate() {
+    const phoneControl = this.registerForm.get(['userContact', 'phone']);
+    phoneControl?.valueChanges.subscribe((x) => {
+      this.validatePhoneControl(phoneControl as FormControl);
+    });
+  }
+
+  //email validation
+
+  validateEmailControl(emailControl: FormControl) {
+    this.emailValidationMessage;
+    if ((emailControl.touched && emailControl.errors) || emailControl.dirty) {
+      if (emailControl.errors?.['required']) {
+        this.emailValidationMessage = this.requiredErrorMessage;
+      } else if (emailControl.errors?.['email']) {
+        this.emailValidationMessage = this.emailErrorMessage;
+      }
+    }
+  }
+
+  emailValidate() {
+    const emailControl = this.registerForm.get(['userContact', 'email']);
+    emailControl?.valueChanges.subscribe((x) => {
+      this.validateEmailControl(emailControl as FormControl);
+    });
+  }
+
+  // password validation
+
+  validatePasswordControl(passwordControl: FormControl) {
+    this.passwordValidationMessage;
+    if (
+      (passwordControl.touched && passwordControl.errors) ||
+      passwordControl.dirty
+    ) {
+      if (passwordControl.errors?.['required']) {
+        this.passwordValidationMessage = this.requiredErrorMessage;
+      } else if (passwordControl.errors?.['minlength']) {
+        this.passwordValidationMessage = this.passwordErrorMessage;
+      }
+    }
+  }
+
+  passwordValidate() {
+    const passwordControl = this.registerForm.get('password');
+    passwordControl?.valueChanges.subscribe((x) => {
+      this.validatePasswordControl(passwordControl as FormControl);
     });
   }
 }

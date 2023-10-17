@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { IMenu } from '@shared';
 
 @Component({
@@ -16,7 +21,11 @@ export class ForgetPasswordComponent implements OnInit {
   backToHomeButton: string = 'بازگشت به خانه';
   forgetPasswordButton: string = 'بازیابی رمز عبور';
 
+  emailValidateMessage: string = '';
+
   // error messages
+
+  firstNameValidationMessage: string = '';
 
   requiredErrorMessage: string = 'این فیلد الزامی است';
   emailErrorMessage: string = 'ایمیل معتبر نیست';
@@ -29,15 +38,33 @@ export class ForgetPasswordComponent implements OnInit {
   forgetPasswordForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
+  ngOnInit() {
+    this.forgetPasswordFormFunc();
+    this.validateEmail();
+  }
 
-  // form
+  // function
   forgetPasswordFormFunc() {
     this.forgetPasswordForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
     });
   }
 
-  ngOnInit() {
-    this.forgetPasswordFormFunc();
+  validateEmailControl(emailControl: FormControl) {
+    this.emailValidateMessage;
+    if ((emailControl.errors && emailControl.touched) || emailControl.dirty) {
+      if (emailControl.errors?.['required']) {
+        this.emailValidateMessage = this.requiredErrorMessage;
+      } else if (emailControl.errors?.['email']) {
+        this.emailValidateMessage = this.emailErrorMessage;
+      }
+    }
+  }
+
+  validateEmail() {
+    const emailControl = this.forgetPasswordForm.get('email');
+    emailControl?.valueChanges.subscribe((x) => {
+      this.validateEmailControl(emailControl as FormControl);
+    });
   }
 }

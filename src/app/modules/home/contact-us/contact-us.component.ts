@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
-  RequiredValidator,
   Validators,
 } from '@angular/forms';
 
@@ -25,6 +25,11 @@ export class ContactUsComponent implements OnInit {
   emailErrorMessage: string = 'ایمیل معتبر نیست';
   minLengthErrorMessage: string = 'باید حداقل 3 کاراکتر وارد شود';
   maxLengthErrorMessage: string = 'باید حداکثر 18 کاراکتر وارد شود';
+  firstNameValidationMessage: string = '';
+  lastNameValidationMessage: string = '';
+  phoneValidationMessage: string = '';
+  emailValidationMessage: string = '';
+  contentValidationMessage: string = '';
 
   contactUsForm!: FormGroup;
 
@@ -37,6 +42,14 @@ export class ContactUsComponent implements OnInit {
   commentInput: string = 'کامنت مورد نظر خود را در اینجا تایپ کنید';
 
   constructor(private formBuilder: FormBuilder) {}
+  ngOnInit() {
+    this.contactUsFormFunc();
+    this.firstNameValidate();
+    this.lastNameValidate();
+    this.phoneValidate();
+    this.emailValidate();
+    this.contentValidate();
+  }
 
   // this.contactUsForm = new FormGroup({
   //   userData: new FormGroup({
@@ -55,11 +68,14 @@ export class ContactUsComponent implements OnInit {
   //     comment: new FormControl(null, [Validators.required]),
   //   }),
   // });
+
   // this.contactUsForm.errors?.['required'];
+
   // const firstNameControl = this.contactUsForm.get([
   //   'userData',
   //   'userFirstName',
   // ]);
+
   // firstNameControl?.valueChanges.subscribe((x) => {
   //   this.validateFirstNameControl(firstNameControl as FormControl);
   // });
@@ -108,7 +124,109 @@ export class ContactUsComponent implements OnInit {
     console.log(this.contactUsForm);
   }
 
-  ngOnInit() {
-    this.contactUsFormFunc();
+  // first name validation
+
+  validateFirstNameControl(firstNameControl: FormControl) {
+    this.firstNameValidationMessage;
+    if (
+      (firstNameControl.errors && firstNameControl.touched) ||
+      firstNameControl.dirty
+    ) {
+      if (firstNameControl.errors?.['required']) {
+        this.firstNameValidationMessage = this.requiredErrorMessage;
+      } else if (firstNameControl.errors?.['minlength']) {
+        this.firstNameValidationMessage = this.minLengthErrorMessage;
+      }
+    }
+  }
+
+  firstNameValidate() {
+    const firstNameControl = this.contactUsForm.get(['userData', 'firstName']);
+    firstNameControl?.valueChanges?.subscribe((x) => {
+      this.validateFirstNameControl(firstNameControl as FormControl);
+    });
+  }
+  // last name validation
+
+  validatelastNameControl(lastNameControl: FormControl) {
+    this.lastNameValidationMessage;
+    if (
+      (lastNameControl.errors && lastNameControl.touched) ||
+      lastNameControl.dirty
+    ) {
+      if (lastNameControl.errors?.['required']) {
+        this.lastNameValidationMessage = this.requiredErrorMessage;
+      } else if (lastNameControl.errors?.['minlength']) {
+        this.lastNameValidationMessage = this.minLengthErrorMessage;
+      }
+    }
+  }
+
+  lastNameValidate() {
+    const lastNameControl = this.contactUsForm.get(['userData', 'lastName']);
+    lastNameControl?.valueChanges?.subscribe((x) => {
+      this.validatelastNameControl(lastNameControl as FormControl);
+    });
+  }
+
+  // phone validation
+
+  validatePhoneControl(phoneControl: FormControl) {
+    this.phoneValidationMessage;
+    if ((phoneControl.touched && phoneControl.errors) || phoneControl.dirty) {
+      if (phoneControl.errors?.['required']) {
+        this.phoneValidationMessage = this.requiredErrorMessage;
+      }
+    }
+  }
+
+  phoneValidate() {
+    const phoneControl = this.contactUsForm.get(['userContact', 'phone']);
+    phoneControl?.valueChanges.subscribe((x) => {
+      this.validatePhoneControl(phoneControl as FormControl);
+    });
+  }
+
+  //email validation
+
+  validateEmailControl(emailControl: FormControl) {
+    this.emailValidationMessage;
+    if ((emailControl.touched && emailControl.errors) || emailControl.dirty) {
+      if (emailControl.errors?.['required']) {
+        this.emailValidationMessage = this.requiredErrorMessage;
+      } else if (emailControl.errors?.['email']) {
+        this.emailValidationMessage = this.emailErrorMessage;
+      }
+    }
+  }
+
+  emailValidate() {
+    const emailControl = this.contactUsForm.get(['userContact', 'content']);
+    emailControl?.valueChanges.subscribe((x) => {
+      this.validateEmailControl(emailControl as FormControl);
+    });
+  }
+
+  // content validation
+
+  validateContentControl(contentControl: FormControl) {
+    this.contentValidationMessage;
+    if (
+      (contentControl.touched && contentControl.errors) ||
+      contentControl.dirty
+    ) {
+      if (contentControl.errors?.['required']) {
+        this.contentValidationMessage = this.requiredErrorMessage;
+      } else if (contentControl.errors?.['minlength']) {
+        this.contentValidationMessage = this.minLengthErrorMessage;
+      }
+    }
+  }
+
+  contentValidate() {
+    const contentControl = this.contactUsForm.get('content');
+    contentControl?.valueChanges.subscribe((x) => {
+      this.validateContentControl(contentControl as FormControl);
+    });
   }
 }

@@ -21,6 +21,7 @@
   <div class="">
     <h4 class="mb-4 text-center w-full">{{ setCommentTitle }}</h4>
     <form [formGroup]="commentForm" class="flex flex-column">
+      <!-- username input -->
       <input
         type="text"
         formControlName="username"
@@ -28,7 +29,9 @@
         placeholder="{{ setCommentUsernameInput }}"
         class="px-3 py-2 m-2"
       />
-      <div
+      <!-- username validation -->
+      <p class="error-message">{{ usernameValidationMessage }}</p>
+      <!-- <div
         *ngIf="
           commentForm.get('username')?.invalid &&
           commentForm.get('username')?.touched
@@ -39,7 +42,8 @@
           *ngIf="commentForm.get('username')?.errors?.['required']"
           >{{ requiredErrorMessage }}</span
         >
-      </div>
+      </div> -->
+      <!-- email input -->
       <input
         type="text"
         formControlName="email"
@@ -47,7 +51,9 @@
         placeholder="{{ setCommentEmailInput }}"
         class="px-3 py-2 m-2"
       />
-      <div
+      <!-- email validation -->
+      <p class="error-message">{{ emailValidationMessage }}</p>
+      <!-- <div
         *ngIf="
           commentForm.get('email')?.invalid && commentForm.get('email')?.touched
         "
@@ -62,7 +68,8 @@
           class="error-message m-2"
           >{{ emailErrorMessage }}</span
         >
-      </div>
+      </div> -->
+      <!-- comment input -->
       <textarea
         rows="5"
         cols="30"
@@ -72,7 +79,9 @@
         placeholder="{{ setCommentTextareaInput }}"
         class="px-3 py-2 m-2"
       ></textarea>
-      <div
+      <!-- comment validation -->
+      <p class="error-message">{{ commentValidationMessage }}</p>
+      <!-- <div
         *ngIf="
           (commentForm.get('content')?.invalid &&
             commentForm.get('content')?.touched) ||
@@ -84,7 +93,7 @@
           class="error-message m-2"
           >{{ requiredErrorMessage }}</span
         >
-      </div>
+      </div> -->
     </form>
     <p-button
       label="{{ setCommentButton }}"

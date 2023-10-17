@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { IMenu } from '@shared';
 
 @Component({
@@ -25,11 +30,20 @@ export class BodyComponent implements OnInit {
 
   // error messages
 
+  emailValidationMessage: string = '';
+  passwordValidationMessage: string = '';
   requiredErrorMessage: string = 'این فیلد الزامی است';
   emailErrorMessage: string = 'ایمیل معتبر نیست';
   passwordErrorMessage: string = 'رمز معتبر نیست';
+  emailControl: any;
 
   constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.loginFormFunc();
+    this.emailValidate();
+    this.passwordValidate();
+  }
 
   // function
 
@@ -40,7 +54,42 @@ export class BodyComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.loginFormFunc();
+  validateEmailControl(emailControl: FormControl) {
+    this.emailValidationMessage;
+    if ((emailControl.touched && emailControl.errors) || emailControl.dirty) {
+      if (emailControl.errors?.['required']) {
+        this.emailValidationMessage = this.requiredErrorMessage;
+      } else if (emailControl.errors?.['email']) {
+        this.emailValidationMessage = this.emailErrorMessage;
+      }
+    }
+  }
+
+  emailValidate() {
+    const emailControl = this.loginForm.get('email');
+    emailControl?.valueChanges.subscribe((x) => {
+      this.validateEmailControl(emailControl as FormControl);
+    });
+  }
+
+  validatePasswordControl(passwordControl: FormControl) {
+    this.passwordValidationMessage;
+    if (
+      (passwordControl.errors && passwordControl.invalid) ||
+      passwordControl.dirty
+    ) {
+      if (passwordControl.errors?.['required']) {
+        this.passwordValidationMessage = this.requiredErrorMessage;
+      } else if (passwordControl.errors?.['minlength']) {
+        this.passwordValidationMessage = this.passwordErrorMessage;
+      }
+    }
+  }
+
+  passwordValidate() {
+    const passwordControl = this.loginForm.get('password');
+    passwordControl?.valueChanges.subscribe((x) => {
+      this.validatePasswordControl(passwordControl as FormControl);
+    });
   }
 }

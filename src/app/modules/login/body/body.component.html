@@ -1,19 +1,22 @@
 <div
   class="w-full flex flex-column text-center align-items-center justify-content-center mt-8"
 >
+  <!-- title -->
   <h1 class="p-5" class="flex align-items-center justify-content-around">
     {{ loginTitle }}
   </h1>
   <form class="mt-3 password" [formGroup]="loginForm">
+    <!-- email input -->
     <input
       formControlName="email"
       class="p-1"
       pInputText
       placeholder="{{ emailInput }}"
       class="block m-2 p-2"
-      autofocus
     />
-    <div
+    <!-- email validation -->
+    <p class="error-message">{{ emailValidationMessage }}</p>
+    <!-- <div
       *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
     >
       <span
@@ -26,7 +29,8 @@
         class="error-message"
         >{{ emailErrorMessage }}</span
       >
-    </div>
+    </div> -->
+    <!-- password input -->
     <p-password
       [toggleMask]="true"
       styleClass="block m-2 p-2 password"
@@ -34,7 +38,9 @@
       styleClass="password-input"
       placeholder="{{ passwordInput }}"
     ></p-password>
-    <div
+    <!-- password validation -->
+    <p class="error-message">{{ passwordValidationMessage }}</p>
+    <!-- <div
       *ngIf="
         loginForm.get('password')?.invalid && loginForm.get('password')?.touched
       "
@@ -49,8 +55,9 @@
         *ngIf="loginForm.get('password')?.errors?.['minlength']"
         >{{ passwordErrorMessage }}</span
       >
-    </div>
+    </div> -->
   </form>
+  <!-- button -->
   <p-button
     label="{{ loginTitle }}"
     styleClass="m-5 py-2 px-3"
@@ -60,6 +67,7 @@
   ></p-button>
 </div>
 <p-divider styleClass="my-4 w-9 mx-auto"></p-divider>
+<!-- login links -->
 <div class="mx-auto text-center">
   <div class="inline-block" *ngFor="let loginLink of loginLinks">
     <a

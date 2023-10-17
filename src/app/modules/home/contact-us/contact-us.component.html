@@ -5,6 +5,7 @@
 <section class="flex flex-column align-items-center w-full">
   <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="">
     <div formGroupName="userData" class="w-full">
+      <!-- first name input -->
       <input
         type="text"
         formControlName="userFirstName"
@@ -13,6 +14,7 @@
         placeholder="{{ firstNameInput }}"
         autofocus
       />
+      <!-- last name input -->
       <input
         type="text"
         formControlName="userLastName"
@@ -21,8 +23,11 @@
         placeholder="{{ lastNameInput }}"
       />
     </div>
+    <!-- first name validation -->
 
-    <div class="flex">
+    <!-- <p class="error-message">{{firstNameValidationMessage}}</p> -->
+
+    <!-- <div class="flex">
       <div
         *ngIf="
           contactUsForm.get(['userData', 'userFirstName'])?.invalid &&
@@ -40,33 +45,36 @@
           *ngIf="contactUsForm.get(['userData', 'userFirstName'])?.errors?.['minlength']"
           >{{ this.minLengthErrorMessage }}</span
         >
-      </div>
-      <div
-        class="w-full"
-        *ngIf="
-          contactUsForm.get(['userData', 'userLastName'])?.invalid &&
-          contactUsForm.get(['userData', 'userLastName'])?.touched
-        "
+      </div> -->
+    <!-- last name validation -->
+    <div
+      class="w-full"
+      *ngIf="
+        contactUsForm.get(['userData', 'userLastName'])?.invalid &&
+        contactUsForm.get(['userData', 'userLastName'])?.touched
+      "
+    >
+      <span
+        class="error-message"
+        *ngIf="contactUsForm.get(['userData','userLastName'])?.errors?.['required']"
+        >{{ requiredErrorMessage }}</span
       >
-        <span
-          class="error-message"
-          *ngIf="contactUsForm.get(['userData','userLastName'])?.errors?.['required']"
-          >{{ requiredErrorMessage }}</span
-        >
-        <span
-          class="error-message"
-          *ngIf="contactUsForm.get(['userData','userLastName'])?.errors?.['minlength']"
-          >{{ minLengthErrorMessage }}</span
-        >
-      </div>
+      <span
+        class="error-message"
+        *ngIf="contactUsForm.get(['userData','userLastName'])?.errors?.['minlength']"
+        >{{ minLengthErrorMessage }}</span
+      >
     </div>
+    <!-- </div> -->
     <div formGroupName="userContact" class="">
+      <!-- phone input -->
       <input
         formControlName="userPhone"
         class="m-2 px-3 py-2"
         pInputText
         placeholder="{{ phoneInput }}"
       />
+      <!-- email input -->
       <input
         type="email"
         formControlName="userEmail"
@@ -76,6 +84,7 @@
       />
     </div>
     <div class="flex">
+      <!-- phone validation -->
       <div
         class="w-full"
         *ngIf="
@@ -94,6 +103,7 @@
           >{{ maxLengthErrorMessage }}</span
         >
       </div>
+      <!-- email validation -->
       <div
         class="w-full"
         *ngIf="
@@ -113,7 +123,7 @@
         >
       </div>
     </div>
-
+    <!-- topic input -->
     <div formGroupName="userComment" class="flex flex-column my-3">
       <input
         type="text"
@@ -122,6 +132,7 @@
         class="m-2 px-3 py-2"
         placeholder="{{ topicInput }}"
       />
+      <!-- comment input -->
       <textarea
         class="m-2 px-3 py-2"
         rows="5"
@@ -132,6 +143,7 @@
         placeholder="{{ commentInput }}"
       ></textarea>
     </div>
+    <!-- comment validation -->
     <div
       class="w-full"
       *ngIf="
@@ -146,6 +158,7 @@
       >
     </div>
   </form>
+  <!-- button -->
 
   <p-button
     label="{{ contactUsButton }}"
