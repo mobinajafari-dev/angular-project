@@ -38,52 +38,16 @@
 
     <!-- product feedback -->
 
-    <div class="w-full">
-      <div class="p-2 w-full flex justify-content-center align-items-center">
-        <img
-          class="m-2 cursor-pointer"
-          width="{{ productIconSize }}"
-          height="{{ productIconSize }}"
-          src="https://img.icons8.com/ios/50/facebook-new.png"
-          alt="facebook-new"
-        />
-        <img
-          class="m-2 cursor-pointer"
-          width="{{ productIconSize }}"
-          height="{{ productIconSize }}"
-          src="https://img.icons8.com/ios/50/pinterest--v1.png"
-          alt="pinterest--v1"
-        />
-        <img
-          class="m-2 cursor-pointer"
-          width="{{ productIconSize }}"
-          height="{{ productIconSize }}"
-          src="https://img.icons8.com/ios/50/instagram-new--v1.png"
-          alt="instagram-new--v1"
-        />
-        <img
-          class="m-2 cursor-pointer"
-          width="{{ productIconSize }}"
-          height="{{ productIconSize }}"
-          src="https://img.icons8.com/ios/50/new-post--v1.png"
-          alt="new-post--v1"
-        />
-        <img
-          class="m-2 cursor-pointer"
-          width="{{ productIconSize }}"
-          height="{{ productIconSize }}"
-          src="https://img.icons8.com/ios/50/google-logo--v1.png"
-          alt="google-logo--v1"
-        />
-        <p-button
-          label="{{ productCommentButton }}"
-          styleClass="p-2 m-1"
-          (click)="scrollToComment()"
-          severity="secondary"
-          [raised]="true"
-          [text]="true"
-        ></p-button>
-      </div>
+    <div class="w-full flex justify-content-center">
+      <app-social-media-icons></app-social-media-icons>
+      <p-button
+        label="{{ productCommentButton }}"
+        styleClass="p-2 m-1"
+        (click)="scrollToComment()"
+        severity="secondary"
+        [raised]="true"
+        [text]="true"
+      ></p-button>
     </div>
   </div>
 </section>

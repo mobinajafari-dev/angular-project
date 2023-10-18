@@ -1,48 +1,12 @@
 <div>
-  <header class="flex my-6 justify-content-evenly align-items-center">
-    <div>
-      <h1 class="my-3">{{ aboutUsTitle }}</h1>
-      <p class="p5 w-20rem">{{ aboutUsContent }}</p>
-    </div>
-    <img
-      height="400px"
-      width="400px"
-      src="../../../../assets/images/about-us-1.jpg"
-      alt="about-us-pic-1"
-    />
-  </header>
-  <section class="flex justify-content-evenly align-items-center my-4">
-    <img
-      src="../../../../assets/images/about-us-2.jpg"
-      alt="about-us-pic-2"
-      width="400px"
-    />
-    <div>
-      <h3 class="my-3">{{ loremIpsumTitle }}</h3>
-      <p class="p5 w-20rem">{{ aboutUsContent }}</p>
-    </div>
+  <!-- about us - content -->
+  <ng-container *ngFor="let aboutUsContent of aboutUsContents">
+    <app-content [contentData]="aboutUsContent"></app-content>
+  </ng-container>
+  <!-- about us - social media -->
+  <section class="flex justify-content-center align-items-center">
+    <ng-container *ngFor="let socialMediaContent of socialMediaContents">
+      <app-content [contentData]="socialMediaContent"></app-content>
+    </ng-container>
   </section>
-  <section class="flex justify-content-evenly align-items-center my-4">
-    <div>
-      <h3 class="my-3">{{ loremIpsumTitle }}</h3>
-      <p class="p5 w-20rem">{{ aboutUsContent }}</p>
-    </div>
-    <img
-      src="../../../../assets/images/about-us-3.jpg"
-      alt="about-us-pic-3"
-      width="400px"
-    />
-  </section>
-  <section class="flex justify-content-evenly align-items-center my-4">
-    <img
-      src="../../../../assets/images/about-us-4.jpg"
-      alt="about-us-pic-4"
-      width="400px"
-    />
-    <div>
-      <h3 class="my-3">{{ loremIpsumTitle }}</h3>
-      <p class="p5 w-20rem">{{ aboutUsContent }}</p>
-    </div>
-  </section>
-  <section></section>
 </div>

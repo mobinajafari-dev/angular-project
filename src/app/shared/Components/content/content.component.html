@@ -1,0 +1,42 @@
+<div [ngSwitch]="contentData?.status">
+  <!-- if the content should be right to left -->
+  <ng-container *ngSwitchCase="'left'">
+    <section class="flex justify-content-evenly align-items-center my-5">
+      <img
+        [src]="contentData?.imageURL"
+        [ngStyle]="{ width: contentData?.widthImage }"
+        [alt]="contentData?.title"
+      />
+      <div>
+        <h3 class="my-2">{{ contentData?.title }}</h3>
+        <p class="p5 w-20rem">{{ contentData?.content }}</p>
+      </div>
+    </section>
+  </ng-container>
+  <!-- if the content should be left to right -->
+  <ng-container *ngSwitchCase="'right'">
+    <section class="flex my-5 justify-content-evenly align-items-center">
+      <div>
+        <h3 class="my-2">{{ contentData?.title }}</h3>
+        <p class="p5 w-20rem">{{ contentData?.content }}</p>
+      </div>
+      <img
+        [src]="contentData?.imageURL"
+        [alt]="contentData?.title"
+        [ngStyle]="{ width: contentData?.widthImage }"
+      />
+    </section>
+  </ng-container>
+
+  <!-- if the content is about social media -->
+
+  <ng-container *ngSwitchCase="'icon'">
+    <div
+      class="p-3 mx-3 my-2 text-center content-icon border-round-xl cursor-pointer"
+    >
+      <img src="{{ contentData?.imageURL }}" alt="{{ contentData?.title }}" />
+      <h3 class="text-base">{{ contentData?.title }}</h3>
+      <p class="text-sm">{{ contentData?.content }}</p>
+    </div>
+  </ng-container>
+</div>

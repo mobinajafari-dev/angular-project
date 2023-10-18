@@ -10,6 +10,7 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     FooterComponent,
     ProductsComponent,
     ContactUsComponent,
+    AboutUsComponent,
   ],
-
-  imports: [RouterModule, HomeRoutingModule, SharedModule, CommonModule],
   exports: [
     HomeComponent,
     MenuComponent,
@@ -29,5 +29,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     CommonModule,
     SharedModule,
   ],
+  imports: [RouterModule, HomeRoutingModule, CommonModule, SharedModule],
 })
 export class HomeModule {}

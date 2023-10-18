@@ -8,13 +8,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PasswordModule } from 'primeng/password';
-import { CommentComponent } from './Components/shared-component.api';
+import {
+  CommentComponent,
+  SocialMediaIconsComponent,
+  ContentComponent,
+} from './Components/shared-component.api';
 import { RatingModule } from 'primeng/rating';
 import { CarouselModule } from 'primeng/carousel';
 import { PostComponent } from './Components/post/post.component';
 
 @NgModule({
-  declarations: [CommentComponent, PostComponent],
+  declarations: [
+    CommentComponent,
+    PostComponent,
+    SocialMediaIconsComponent,
+    ContentComponent,
+  ],
   imports: [
     CommonModule,
     ButtonModule,
@@ -40,6 +49,8 @@ import { PostComponent } from './Components/post/post.component';
     RatingModule,
     CarouselModule,
     PostComponent,
+    SocialMediaIconsComponent,
+    ContentComponent,
   ],
 })
 export class SharedModule {}

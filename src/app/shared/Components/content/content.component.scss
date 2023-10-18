@@ -1,0 +1,23 @@
+@import "/src/global-styles.scss";
+
+// icon case style
+
+.content-icon {
+  background-color: #fdfdfd;
+  width: 200px;
+  @include box-shadow(0.2);
+  h3 {
+    color: #555;
+  }
+  p {
+    color: #999;
+  }
+  &:hover {
+    transition: all ease-in-out 0.3ms;
+    transform: scale(1.04);
+    background-color: #555;
+    h3 {
+      color: #fdfdfd;
+    }
+  }
+}
