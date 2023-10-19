@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { IProducts } from '@shared';
+import { IComment, IProducts } from '@shared';
 
 @Component({
   selector: 'products-us',
@@ -13,6 +13,7 @@ import { IProducts } from '@shared';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
+  commentTitle: string = 'نظرات';
   // definitions of variables
   productInfo: IProducts;
   activeTabIndex = 0;
@@ -24,20 +25,13 @@ export class ProductsComponent implements OnInit {
   value!: number;
   valueUsername: string | undefined;
 
-  // icon size
-
-  productIconSize: number = 22;
-
   // form definitions
 
   commentForm!: FormGroup;
 
   menuTabs: { label: string; content: string }[];
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private elementRef: ElementRef
-  ) {
+  constructor(private elementRef: ElementRef) {
     // product information
 
     this.productInfo = {
@@ -75,9 +69,7 @@ export class ProductsComponent implements OnInit {
 
   // life cycle methods
 
-  ngOnInit() {
-    this.commentFormFunc();
-  }
+  ngOnInit() {}
 
   // functions
 
@@ -90,12 +82,28 @@ export class ProductsComponent implements OnInit {
     this.activeTabIndex = index;
   }
 
-  commentFormFunc() {
-    this.commentForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      comment: new FormControl(null, Validators.required),
-      rating: new FormControl(null, Validators.required),
-    });
-  }
+  // product comment
+
+  productComments: IComment[] = [
+    {
+      username: 'username1',
+      profile: 'https://img.icons8.com/ios/50/user-male-circle--v1.png',
+      content: 'کامنت اول کامنت کامنت کامنت کامنت کامنت',
+    },
+    {
+      username: 'username2',
+      profile: 'https://img.icons8.com/ios/50/user-male-circle--v1.png',
+      content: 'کامنت دوم کامنت کامنت کامنت کامنت کامنت',
+    },
+    {
+      username: 'username3',
+      profile: 'https://img.icons8.com/ios/50/user-male-circle--v1.png',
+      content: 'کامنت سوم کامنت کامنت کامنت کامنت کامنت',
+    },
+    {
+      username: 'username4',
+      profile: 'https://img.icons8.com/ios/50/user-male-circle--v1.png',
+      content: 'کامنت چهارم کامنت کامنت کامنت کامنت کامنت',
+    },
+  ];
 }

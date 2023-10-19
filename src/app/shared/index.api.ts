@@ -4,5 +4,8 @@ export * from './Interfaces/shared-interface.api';
 // shared module
 export * from './shared.module';
 
-// component module
+// shared component
 export * from './Components/shared-component.api';
+
+// shared directive
+// export * from './Directives/shared-directive.api';

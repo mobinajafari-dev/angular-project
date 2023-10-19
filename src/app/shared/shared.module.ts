@@ -12,6 +12,7 @@ import {
   CommentComponent,
   SocialMediaIconsComponent,
   ContentComponent,
+  SetCommnetComponent,
 } from './Components/shared-component.api';
 import { RatingModule } from 'primeng/rating';
 import { CarouselModule } from 'primeng/carousel';
@@ -23,6 +24,7 @@ import { PostComponent } from './Components/post/post.component';
     PostComponent,
     SocialMediaIconsComponent,
     ContentComponent,
+    SetCommnetComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +53,7 @@ import { PostComponent } from './Components/post/post.component';
     PostComponent,
     SocialMediaIconsComponent,
     ContentComponent,
+    SetCommnetComponent,
   ],
 })
 export class SharedModule {}

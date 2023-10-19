@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
 
 import { HomeComponent } from './home.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './Components/menu/menu.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { BodyComponent } from './body/body.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './Components/footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';

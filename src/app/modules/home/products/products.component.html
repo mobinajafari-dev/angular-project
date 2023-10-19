@@ -82,9 +82,17 @@
   </div>
 
   <p-divider styleClass="w-10 mx-auto"></p-divider>
-  <section id="comment">
+  <section #comment>
     <!-- comments -->
-    <app-comment></app-comment>
+    <div class="flex justify-content-evenly align-items-center">
+      <section class="flex flex-column">
+        <h3 class="w-full my-5 text-center">{{ commentTitle }}</h3>
+        <ng-container *ngFor="let productComment of productComments"
+          ><app-comment [commentData]="productComment"></app-comment
+        ></ng-container>
+      </section>
+      <app-set-comment></app-set-comment>
+    </div>
   </section>
 
   <p-divider styleClass="w-10 mx-auto my-4"></p-divider>
