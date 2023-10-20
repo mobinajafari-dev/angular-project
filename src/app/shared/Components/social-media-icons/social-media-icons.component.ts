@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SocialMediaIconsComponent {
   productIconSize: number = 25;
+  socialMediaTooltipText = {
+    facebook: 'facebook',
+  };
 }

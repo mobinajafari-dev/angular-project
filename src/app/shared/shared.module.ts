@@ -17,6 +17,7 @@ import {
 import { RatingModule } from 'primeng/rating';
 import { CarouselModule } from 'primeng/carousel';
 import { PostComponent } from './Components/post/post.component';
+import { TooltipDirective } from './Directives/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PostComponent } from './Components/post/post.component';
     SocialMediaIconsComponent,
     ContentComponent,
     SetCommnetComponent,
+    TooltipDirective,
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import { PostComponent } from './Components/post/post.component';
     SocialMediaIconsComponent,
     ContentComponent,
     SetCommnetComponent,
+    TooltipDirective,
   ],
 })
 export class SharedModule {}

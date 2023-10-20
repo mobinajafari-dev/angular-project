@@ -8,4 +8,4 @@ export * from './shared.module';
 export * from './Components/shared-component.api';
 
 // shared directive
-// export * from './Directives/shared-directive.api';
+export * from './Directives/shared-directive.api';

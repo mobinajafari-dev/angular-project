@@ -30,6 +30,8 @@
         [rounded]="true"
         [text]="true"
         severity="secondary"
+        appTooltip="افزدون به علاقه مندی"
+        placement="bottom"
       ></p-button>
       <p class="mx-1 text-sm">{{ whishlistButtonContent }}</p>
     </div>
@@ -47,6 +49,8 @@
         severity="secondary"
         [raised]="true"
         [text]="true"
+        appTooltip="ارسال نظر"
+        placement="left"
       ></p-button>
     </div>
   </div>
@@ -82,7 +86,7 @@
   </div>
 
   <p-divider styleClass="w-10 mx-auto"></p-divider>
-  <section #comment>
+  <section id="comment">
     <!-- comments -->
     <div class="flex justify-content-evenly align-items-center">
       <section class="flex flex-column">
