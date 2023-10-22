@@ -65,14 +65,55 @@ $primary-black: #555;
 
 // // tooltp styles
 
-// .tooltip {
-//   position: absolute;
-//   opacity: 0;
-//   z-index: 9999;
-//   transition: opacity 0.3s;
-//   border-radius: 5px;
-//   background-color: #555;
-//   color: #f3f3f3;
-//   padding: 10px;
-//   font-size: 12px;
-// }
+$tooltip-min-width: 50px;
+$tooltip-min-height: 40px;
+
+.tooltip {
+  min-width: $tooltip-min-width;
+  min-height: $tooltip-min-height;
+  transition: ease-in-out 0.3s;
+
+  &.bottom::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: -4px;
+    left: calc($tooltip-min-width / 2);
+  }
+
+  &.top::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    bottom: -4px;
+    left: calc($tooltip-min-width / 2);
+  }
+
+  &.right::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: calc($tooltip-min-height / 2);
+    left: -4px;
+  }
+
+  &.left::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: calc($tooltip-min-height / 2);
+    right: -4px;
+  }
+}
