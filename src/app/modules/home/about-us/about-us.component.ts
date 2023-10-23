@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component } from '@angular/core';
 import { IContent } from '@shared';
 
@@ -5,6 +12,13 @@ import { IContent } from '@shared';
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.scss'],
+  animations: [
+    trigger('fade', [
+      state('void', style({ opacity: 0, marginBottom: '3rem' })),
+      transition(':enter,:leave', [animate('3s ease-in')]),
+    ]),
+    ,
+  ],
 })
 export class AboutUsComponent {
   loremIpsumContent: string =

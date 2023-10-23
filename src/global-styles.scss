@@ -65,14 +65,7 @@ $primary-black: #555;
 
 // // tooltp styles
 
-$tooltip-min-width: 50px;
-$tooltip-min-height: 40px;
-
 .tooltip {
-  min-width: $tooltip-min-width;
-  min-height: $tooltip-min-height;
-  transition: ease-in-out 0.3s;
-
   &.bottom::after {
     content: "";
     width: 8px;
@@ -81,7 +74,7 @@ $tooltip-min-height: 40px;
     position: absolute;
     transform: rotate(-45deg);
     top: -4px;
-    left: calc($tooltip-min-width / 2);
+    left: 15px;
   }
 
   &.top::after {
@@ -92,7 +85,7 @@ $tooltip-min-height: 40px;
     position: absolute;
     transform: rotate(-45deg);
     bottom: -4px;
-    left: calc($tooltip-min-width / 2);
+    left: 15px;
   }
 
   &.right::after {
@@ -102,7 +95,7 @@ $tooltip-min-height: 40px;
     background-color: #555;
     position: absolute;
     transform: rotate(-45deg);
-    top: calc($tooltip-min-height / 2);
+    top: 10px;
     left: -4px;
   }
 
@@ -113,7 +106,7 @@ $tooltip-min-height: 40px;
     background-color: #555;
     position: absolute;
     transform: rotate(-45deg);
-    top: calc($tooltip-min-height / 2);
+    top: 10px;
     right: -4px;
   }
 }

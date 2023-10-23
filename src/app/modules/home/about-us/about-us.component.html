@@ -1,12 +1,12 @@
 <div>
   <!-- about us - content -->
   <ng-container *ngFor="let aboutUsContent of aboutUsContents">
-    <app-content [contentData]="aboutUsContent"></app-content>
+    <app-content [contentData]="aboutUsContent" [@fade]=""></app-content>
   </ng-container>
   <!-- about us - social media -->
   <section class="flex justify-content-center align-items-center">
     <ng-container *ngFor="let socialMediaContent of socialMediaContents">
-      <app-content [contentData]="socialMediaContent"></app-content>
+      <app-content [contentData]="socialMediaContent" [@fade]=""></app-content>
     </ng-container>
   </section>
 </div>

@@ -1,11 +1,12 @@
 import { Directive, HostListener, Input, Renderer2 } from '@angular/core';
 import { IPosition } from '../Interfaces/position';
+import { AnimationBuilder } from '@angular/animations';
 
 @Directive({
   selector: '[appTooltip]',
 })
 export class TooltipDirective {
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private builder: AnimationBuilder) {}
 
   // getting data with input from the host element
 
@@ -15,23 +16,50 @@ export class TooltipDirective {
 
   // tooltip placement
 
-  @Input({ required: true }) placement!: 'right' | 'left' | 'bottom' | 'top';
+  @Input() placement:
+    | 'right'
+    | 'left'
+    | 'bottom'
+    | 'top'
+    | 'top-right'
+    | 'top-left'
+    | 'bottom-left'
+    | 'bottom-right' = 'bottom';
 
   // tooltip offset by default is zero
 
   @Input() offset: number = 0;
 
+  // tooltip min width and height
+
+  @Input('minWidth') minWidth!: string;
+  @Input('minHeight') minHeight!: string;
+
+  // tooltip max width and height
+
+  @Input('maxWidth') maxWidth!: string;
+  @Input('maxHeight') maxHeight!: string;
+
   @HostListener('mouseenter', ['$event.target']) onMouseEnter(event: any) {
     this.hostElement = event;
     this.hostElementPosition = event.getBoundingClientRect();
+
     if (!this.tooltipElement) {
       this.createTooltip();
     }
-    this.renderer.setStyle(this.tooltipElement, 'opacity', 1);
+    this.renderer.appendChild(this.hostElement, this.tooltipElement);
+    console.log('after create tooltip :', this.hostElement.childNodes);
+    console.log(this.hostElementPosition);
+    this.showTooltip();
+    console.log(this.placement);
+    this.positionTooltip();
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
-    this.renderer.setStyle(this.tooltipElement, 'opacity', 0);
+  @HostListener('mouseleave', ['$event.target']) onMouseLeave(event: any) {
+    this.hostElement.removeChild(this.tooltipElement);
+    console.log(this.tooltipElement);
+    console.log(event);
+    console.log('hide tooltip :', this.hostElement.childNodes);
   }
 
   // host and tooltip element position
@@ -39,17 +67,30 @@ export class TooltipDirective {
   hostElementPosition!: IPosition;
   tooltipElementPosition!: IPosition;
 
+  // limited value for the show tooltip function in order to set the placement
+
+  minLimitedValue: number = 0;
+
   // host and tooltip element
 
   private tooltipElement!: HTMLElement;
   private hostElement!: HTMLElement;
 
-  //parentNode
-  //childNodes
+  showTooltip() {
+    if (this.hostElementPosition.right <= 0) {
+      return (this.placement = 'top-left');
+    } else if (this.hostElementPosition.bottom <= 0) {
+      return (this.placement = 'top-right');
+    } else if (this.hostElementPosition.left <= 0) {
+      return (this.placement = 'bottom-right');
+    } else if (this.hostElementPosition.top <= 0) {
+      return (this.placement = 'bottom-left');
+    }
+    return this.placement;
+  }
 
   createTooltip() {
-    console.log('showtooltip :', this.hostElement.childNodes);
-
+    console.log('before reate tooltip :', this.hostElement.childNodes);
     // creating div
 
     this.tooltipElement = this.renderer.createElement('div');
@@ -58,7 +99,6 @@ export class TooltipDirective {
 
     const tooltipContent = this.renderer.createText(this.tooltipText);
     this.renderer.appendChild(this.tooltipElement, tooltipContent);
-    this.renderer.appendChild(this.hostElement, this.tooltipElement);
 
     // setting the style of host element to position relative
 
@@ -73,18 +113,22 @@ export class TooltipDirective {
     this.renderer.setStyle(this.tooltipElement, 'padding', '5px');
     this.renderer.setStyle(this.tooltipElement, 'border-radius', '5px');
     this.renderer.setStyle(this.tooltipElement, 'cursor', 'default');
+    this.renderer.setStyle(this.tooltipElement, 'min-width', this.minWidth);
+    this.renderer.setStyle(this.tooltipElement, 'max-width', this.maxWidth);
+    this.renderer.setStyle(this.tooltipElement, 'min-height', this.minHeight);
+    this.renderer.setStyle(this.tooltipElement, 'max-height', this.maxHeight);
+    this.renderer.setStyle(this.tooltipElement, 'width', 'auto');
+    this.renderer.setStyle(this.tooltipElement, 'height', 'auto');
 
     // adding the tooltip class to tooltip element in order to set after animation for making it's arrow
 
     this.renderer.addClass(this.tooltipElement, 'tooltip');
-
-    this.positionTooltip();
   }
 
   positionTooltip() {
     // getting the rect object for the tooltip element
 
-    this.tooltipElementPosition = this.tooltipElement.getBoundingClientRect();
+    this.tooltipElementPosition = this.tooltipElement?.getBoundingClientRect();
 
     // defining the left and top
 
@@ -130,6 +174,14 @@ export class TooltipDirective {
 
         this.renderer.addClass(this.tooltipElement, 'right');
         break;
+      case 'top-right':
+        break;
+      case 'top-left':
+        break;
+      case 'bottom-left':
+        break;
+      case 'bottom-right':
+        break;
     }
 
     // setting the top and left to the tooltip element
@@ -154,7 +206,8 @@ export class TooltipDirective {
 //
 //
 //
-//
+//parentNode
+//childNodes
 //
 //
 //
