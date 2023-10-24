@@ -4,37 +4,25 @@ import {
   HostListener,
   Input,
   Renderer2,
-  AfterViewInit,
   ElementRef,
 } from '@angular/core';
 import { IPosition } from '../Interfaces/position';
 import {
   AnimationBuilder,
-  AnimationMetadata,
   animate,
+  state,
   style,
+  transition,
+  trigger,
 } from '@angular/animations';
 
 @Directive({
   selector: '[appTooltip]',
 })
-export class TooltipDirective implements AfterViewInit {
-  constructor(
-    private renderer: Renderer2,
-    private builder: AnimationBuilder,
-    private elementRef: ElementRef
-  ) {}
+export class TooltipDirective {
+  constructor(private renderer: Renderer2) {}
 
   @HostBinding('attr.show') show!: string;
-
-  ngAfterViewInit() {
-    const showAttribute = this.elementRef.nativeElement.getAttribute('show');
-    if (showAttribute === 'true') {
-      this.fadeIn();
-    } else if (showAttribute === 'false') {
-      this.fadeOut();
-    }
-  }
 
   // getting data with input from the host element
 
@@ -75,17 +63,16 @@ export class TooltipDirective implements AfterViewInit {
     if (!this.tooltipElement) {
       this.createTooltip();
     }
-    this.renderer.setAttribute(this.tooltipElement, 'show', 'true');
+
     console.log('mouseeneter', this.tooltipElement);
     console.log('after create tooltip :', this.hostElement.childNodes);
     console.log(this.hostElementPosition);
     this.showTooltip();
-    // console.log(this.placement);
+    console.log(this.placement);
     this.positionTooltip();
   }
 
   @HostListener('mouseleave', ['$event.target']) onMouseLeave(event: any) {
-    this.renderer.setAttribute(this.tooltipElement, 'show', 'false');
     console.log('moueleave', this.tooltipElement);
     // console.log(event);
     console.log('hide tooltip :', this.hostElement.childNodes);
@@ -95,24 +82,40 @@ export class TooltipDirective implements AfterViewInit {
   hostElementPosition!: IPosition;
   tooltipElementPosition!: IPosition;
 
-  // limited value for the show tooltip function in order to set the placement
-
-  minLimitedValue: number = 0;
-
   // host and tooltip element
 
   private tooltipElement!: HTMLElement;
   private hostElement!: HTMLElement;
+  // limited value for the show tooltip function in order to set the placement
+
+  placementOffset: number = 0;
+
+  minX: number = 0 + this.placementOffset;
+  minY: number = 0 + this.placementOffset;
+  maxX: number = window.innerWidth - this.placementOffset;
+  maxY: number = window.innerHeight - this.placementOffset;
 
   showTooltip() {
-    if (this.hostElementPosition.right <= 0) {
-      return (this.placement = 'top-left');
-    } else if (this.hostElementPosition.bottom <= 0) {
-      return (this.placement = 'top-right');
-    } else if (this.hostElementPosition.left <= 0) {
-      return (this.placement = 'bottom-right');
-    } else if (this.hostElementPosition.top <= 0) {
-      return (this.placement = 'bottom-left');
+    if (
+      this.hostElementPosition.x <= this.minX &&
+      this.hostElementPosition.y <= this.minY
+    ) {
+      this.placement = 'top-left';
+    } else if (
+      this.hostElementPosition.x <= this.maxX &&
+      this.hostElementPosition.y <= this.minY
+    ) {
+      this.placement = 'top-right';
+    } else if (
+      this.hostElementPosition.x <= this.minX &&
+      this.hostElementPosition.y <= this.maxY
+    ) {
+      this.placement = 'bottom-left';
+    } else if (
+      this.hostElementPosition.x <= this.maxX &&
+      this.hostElementPosition.y <= this.maxY
+    ) {
+      this.placement = 'bottom-right';
     }
     return this.placement;
   }
@@ -214,8 +217,9 @@ export class TooltipDirective implements AfterViewInit {
         this.renderer.addClass(this.tooltipElement, 'top-left');
         break;
       case 'bottom-left':
-        top = -this.hostElementPosition.height + this.offset;
+        top = -this.tooltipElementPosition.height + this.offset;
         left = this.hostElementPosition.width + this.offset;
+        this.renderer.addClass(this.tooltipElement, 'bottom-left');
         break;
       case 'bottom-right':
         top = -(this.tooltipElementPosition.height + this.offset);
@@ -231,27 +235,6 @@ export class TooltipDirective implements AfterViewInit {
   }
 
   // animation function
-  private fadeIn() {
-    const showTooltipAnimation = this.builder.build([
-      style({ opacity: 0 }),
-      animate('1s ease-in', style({ opacity: 1 })),
-    ]);
-
-    const player = showTooltipAnimation.create(this.tooltipElement);
-
-    player.play();
-  }
-
-  private fadeOut() {
-    const hideTooltipAnimation = this.builder.build([
-      style({ opacity: '*' }),
-      animate('1s ease-in-out', style({ opacity: 0 })),
-    ]);
-
-    const player = hideTooltipAnimation.create(this.tooltipElement);
-
-    player.play();
-  }
 }
 
 //

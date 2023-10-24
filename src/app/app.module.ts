@@ -8,9 +8,10 @@ import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from '@shared';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
 import { LoginModule } from './modules/login/login.module';
+import { TestComponent } from './modules/test/test.component';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent],
+  declarations: [AppComponent, NotFoundComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

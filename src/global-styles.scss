@@ -63,7 +63,7 @@ $primary-black: #555;
   text-align: right;
 }
 
-// // tooltp styles
+// tooltp styles
 
 .tooltip {
   &.bottom::after {
@@ -74,7 +74,7 @@ $primary-black: #555;
     position: absolute;
     transform: rotate(-45deg);
     top: -4px;
-    left: 15px;
+    left: 50%;
   }
 
   &.top::after {
@@ -85,7 +85,7 @@ $primary-black: #555;
     position: absolute;
     transform: rotate(-45deg);
     bottom: -4px;
-    left: 15px;
+    left: 50%;
   }
 
   &.right::after {
@@ -95,7 +95,7 @@ $primary-black: #555;
     background-color: #555;
     position: absolute;
     transform: rotate(-45deg);
-    top: 10px;
+    top: 50%;
     left: -4px;
   }
 
@@ -106,7 +106,7 @@ $primary-black: #555;
     background-color: #555;
     position: absolute;
     transform: rotate(-45deg);
-    top: 10px;
+    top: 50%;
     right: -4px;
   }
   &.top-left::after {
@@ -117,7 +117,7 @@ $primary-black: #555;
     position: absolute;
     transform: rotate(-45deg);
     top: -4px;
-    left: 5px;
+    left: 25%;
   }
   &.top-right::after {
     content: "";
@@ -127,7 +127,7 @@ $primary-black: #555;
     position: absolute;
     transform: rotate(-45deg);
     top: -4px;
-    right: 5px;
+    right: 25%;
   }
   &.bottom-right::after {
     content: "";
@@ -137,7 +137,7 @@ $primary-black: #555;
     position: absolute;
     transform: rotate(-45deg);
     bottom: -4px;
-    right: 5px;
+    right: 25%;
   }
   &.bottom-left::after {
     content: "";
@@ -146,7 +146,7 @@ $primary-black: #555;
     background-color: #555;
     position: absolute;
     transform: rotate(-45deg);
-    bottom: 4px;
-    left: 5px;
+    bottom: -4px;
+    left: 25%;
   }
 }
