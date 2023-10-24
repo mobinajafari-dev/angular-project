@@ -1,12 +1,40 @@
-import { Directive, HostListener, Input, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  HostBinding,
+  HostListener,
+  Input,
+  Renderer2,
+  AfterViewInit,
+  ElementRef,
+} from '@angular/core';
 import { IPosition } from '../Interfaces/position';
-import { AnimationBuilder } from '@angular/animations';
+import {
+  AnimationBuilder,
+  AnimationMetadata,
+  animate,
+  style,
+} from '@angular/animations';
 
 @Directive({
   selector: '[appTooltip]',
 })
-export class TooltipDirective {
-  constructor(private renderer: Renderer2, private builder: AnimationBuilder) {}
+export class TooltipDirective implements AfterViewInit {
+  constructor(
+    private renderer: Renderer2,
+    private builder: AnimationBuilder,
+    private elementRef: ElementRef
+  ) {}
+
+  @HostBinding('attr.show') show!: string;
+
+  ngAfterViewInit() {
+    const showAttribute = this.elementRef.nativeElement.getAttribute('show');
+    if (showAttribute === 'true') {
+      this.fadeIn();
+    } else if (showAttribute === 'false') {
+      this.fadeOut();
+    }
+  }
 
   // getting data with input from the host element
 
@@ -47,23 +75,23 @@ export class TooltipDirective {
     if (!this.tooltipElement) {
       this.createTooltip();
     }
-    this.renderer.appendChild(this.hostElement, this.tooltipElement);
+    this.renderer.setAttribute(this.tooltipElement, 'show', 'true');
+    console.log('mouseeneter', this.tooltipElement);
     console.log('after create tooltip :', this.hostElement.childNodes);
     console.log(this.hostElementPosition);
     this.showTooltip();
-    console.log(this.placement);
+    // console.log(this.placement);
     this.positionTooltip();
   }
 
   @HostListener('mouseleave', ['$event.target']) onMouseLeave(event: any) {
-    this.hostElement.removeChild(this.tooltipElement);
-    console.log(this.tooltipElement);
-    console.log(event);
+    this.renderer.setAttribute(this.tooltipElement, 'show', 'false');
+    console.log('moueleave', this.tooltipElement);
+    // console.log(event);
     console.log('hide tooltip :', this.hostElement.childNodes);
   }
 
   // host and tooltip element position
-
   hostElementPosition!: IPosition;
   tooltipElementPosition!: IPosition;
 
@@ -119,6 +147,7 @@ export class TooltipDirective {
     this.renderer.setStyle(this.tooltipElement, 'max-height', this.maxHeight);
     this.renderer.setStyle(this.tooltipElement, 'width', 'auto');
     this.renderer.setStyle(this.tooltipElement, 'height', 'auto');
+    this.renderer.appendChild(this.hostElement, this.tooltipElement);
 
     // adding the tooltip class to tooltip element in order to set after animation for making it's arrow
 
@@ -175,12 +204,23 @@ export class TooltipDirective {
         this.renderer.addClass(this.tooltipElement, 'right');
         break;
       case 'top-right':
+        top = this.hostElementPosition.height - this.offset;
+        left = -this.tooltipElementPosition.width - this.offset;
+        this.renderer.addClass(this.tooltipElement, 'top-right');
         break;
       case 'top-left':
+        top = this.hostElementPosition.height + this.offset;
+        left = this.hostElementPosition.width + this.offset;
+        this.renderer.addClass(this.tooltipElement, 'top-left');
         break;
       case 'bottom-left':
+        top = -this.hostElementPosition.height + this.offset;
+        left = this.hostElementPosition.width + this.offset;
         break;
       case 'bottom-right':
+        top = -(this.tooltipElementPosition.height + this.offset);
+        left = -(this.tooltipElementPosition.width + this.offset);
+        this.renderer.addClass(this.tooltipElement, 'bottom-right');
         break;
     }
 
@@ -188,6 +228,29 @@ export class TooltipDirective {
 
     this.renderer.setStyle(this.tooltipElement, 'top', `${top}px`);
     this.renderer.setStyle(this.tooltipElement, 'left', `${left}px`);
+  }
+
+  // animation function
+  private fadeIn() {
+    const showTooltipAnimation = this.builder.build([
+      style({ opacity: 0 }),
+      animate('1s ease-in', style({ opacity: 1 })),
+    ]);
+
+    const player = showTooltipAnimation.create(this.tooltipElement);
+
+    player.play();
+  }
+
+  private fadeOut() {
+    const hideTooltipAnimation = this.builder.build([
+      style({ opacity: '*' }),
+      animate('1s ease-in-out', style({ opacity: 0 })),
+    ]);
+
+    const player = hideTooltipAnimation.create(this.tooltipElement);
+
+    player.play();
   }
 }
 

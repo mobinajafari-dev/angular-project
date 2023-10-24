@@ -9,3 +9,6 @@ export * from './Components/shared-component.api';
 
 // shared directive
 export * from './Directives/shared-directive.api';
+
+// shared services
+export * from './services/shared-service.api';

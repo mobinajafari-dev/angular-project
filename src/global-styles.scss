@@ -109,4 +109,44 @@ $primary-black: #555;
     top: 10px;
     right: -4px;
   }
+  &.top-left::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: -4px;
+    left: 5px;
+  }
+  &.top-right::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: -4px;
+    right: 5px;
+  }
+  &.bottom-right::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    bottom: -4px;
+    right: 5px;
+  }
+  &.bottom-left::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    position: absolute;
+    transform: rotate(-45deg);
+    bottom: 4px;
+    left: 5px;
+  }
 }

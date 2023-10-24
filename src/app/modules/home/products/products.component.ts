@@ -1,10 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { IComment, IProducts } from '@shared';
 
 @Component({

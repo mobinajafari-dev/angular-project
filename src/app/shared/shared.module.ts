@@ -18,6 +18,7 @@ import { RatingModule } from 'primeng/rating';
 import { CarouselModule } from 'primeng/carousel';
 import { PostComponent } from './Components/post/post.component';
 import { TooltipDirective } from './Directives/tooltip.directive';
+import { fadeInAnimation } from './services/animations';
 
 @NgModule({
   declarations: [
