@@ -96,6 +96,16 @@ export class TooltipDirective {
   maxY: number = window.innerHeight - this.placementOffset;
 
   showTooltip() {
+    if (this.hostElementPosition.x <= this.minX) {
+      this.placement = 'right';
+    } else if (this.hostElementPosition.x <= this.maxX) {
+      this.placement = 'left';
+    } else if (this.hostElementPosition.y <= this.minY) {
+      this.placement = 'bottom';
+    } else if (this.hostElementPosition.y <= this.maxY) {
+      this.placement = 'top';
+    }
+
     if (
       this.hostElementPosition.x <= this.minX &&
       this.hostElementPosition.y <= this.minY
@@ -117,6 +127,24 @@ export class TooltipDirective {
     ) {
       this.placement = 'bottom-right';
     }
+
+    // if (this.hostElementPosition.y <= this.minY) {
+    //   this.hostElementPosition.x <= this.minX
+    //     ? (this.placement = 'top-left')
+    //     : (this.placement = 'bottom');
+    // } else if (this.hostElementPosition.x <= this.minX) {
+    //   this.hostElementPosition.y <= this.maxY
+    //     ? (this.placement = 'bottom-left')
+    //     : (this.placement = 'right');
+    // } else if (this.hostElementPosition.x <= this.maxX) {
+    //   this.hostElementPosition.y <= this.minY
+    //     ? (this.placement = 'top-right')
+    //     : (this.placement = 'left');
+    // } else if (this.hostElementPosition.y <= this.maxY) {
+    //   this.hostElementPosition.x <= this.maxX
+    //     ? (this.placement = 'bottom-right')
+    //     : (this.placement = 'top');
+    // }
     return this.placement;
   }
 
