@@ -72,85 +72,91 @@ $primary-black: #555;
 
 .tooltip-bottom::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  top: -4px;
-  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid red;
+  right: 40%;
+  top: -0.5rem;
 }
 
 .tooltip-top::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  bottom: -4px;
-  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 0.5rem solid red;
+  right: 40%;
+  bottom: -0.5rem;
 }
 
 .tooltip-right::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  top: 50%;
-  left: -4px;
+  width: 0;
+  height: 0;
+  border-top: 0.4rem solid transparent;
+  border-bottom: 0.4rem solid transparent;
+  border-right: 0.4rem solid red;
+  left: -0.4rem;
 }
 
 .tooltip-left::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  top: 50%;
-  right: -4px;
+  width: 0;
+  height: 0;
+  border-top: 0.4rem solid transparent;
+  border-bottom: 0.4rem solid transparent;
+  border-left: 0.4rem solid red;
+  right: -0.4rem;
 }
 .tooltip-top-left::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  top: -4px;
-  left: 25%;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid red;
+  top: -0.5rem;
+  left: 0.25rem;
 }
 .tooltip-top-right::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  top: -4px;
-  right: 25%;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid red;
+  top: -0.5rem;
+  right: 0.25rem;
 }
 .tooltip-bottom-right::after {
   content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
   position: absolute;
-  transform: rotate(-45deg);
-  bottom: -4px;
-  right: 25%;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 0.5rem solid red;
+  right: 0.25rem;
+  bottom: -0.5rem;
 }
 .tooltip-bottom-left::after {
   content: "";
+  position: absolute;
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 10px solid #555;
-  bottom: -10px;
-  right: 25%;
-  transform: rotate(90deg);
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 0.5rem solid red;
+
+  left: 0.25rem;
+  bottom: -0.5rem;
 }
