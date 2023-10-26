@@ -1,0 +1,19 @@
+<ng-container *ngFor="let blogContent of blogContents">
+  <div class="w-8 mx-auto my-3 p-2 box-shadow border-round-lg">
+    <app-content [contentData]="blogContent">
+      <ng-template>
+        <p-divider class="w-5 p-1"></p-divider>
+        <div class="flex align-items-center">
+          <app-social-media-icons></app-social-media-icons>
+          <p-button
+            label="{{ blogButton }}"
+            styleClass="m-1 py-1 px-2"
+            severity="secondary"
+            [raised]="true"
+            [text]="true"
+          ></p-button>
+        </div>
+      </ng-template>
+    </app-content>
+  </div>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 import { IContent } from '../../Interfaces/content';
 
 @Component({
@@ -8,4 +8,5 @@ import { IContent } from '../../Interfaces/content';
 })
 export class ContentComponent {
   @Input() contentData: IContent | undefined;
+  @ContentChild(TemplateRef) template!: TemplateRef<any>;
 }

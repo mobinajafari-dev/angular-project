@@ -11,6 +11,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ProductsComponent,
     ContactUsComponent,
     AboutUsComponent,
+    BlogComponent,
   ],
   exports: [
     HomeComponent,
