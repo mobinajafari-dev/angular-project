@@ -103,6 +103,7 @@ $primary-black: #555;
   border-bottom: 0.4rem solid transparent;
   border-right: 0.4rem solid red;
   left: -0.4rem;
+  top: 40%;
 }
 
 .tooltip-left::after {
@@ -114,6 +115,7 @@ $primary-black: #555;
   border-bottom: 0.4rem solid transparent;
   border-left: 0.4rem solid red;
   right: -0.4rem;
+  top: 40%;
 }
 .tooltip-top-left::after {
   content: "";
