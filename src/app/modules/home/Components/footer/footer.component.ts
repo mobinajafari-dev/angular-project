@@ -38,7 +38,7 @@ export class FooterComponent {
         items: [
           { title: 'ورود', path: '/login' },
           { title: 'محصولات', path: '/home/products/:id' },
-          { title: 'بلاگ', path: '/home/blog' },
+          { title: 'بلاگ', path: '/home/blogس' },
         ],
       },
       {

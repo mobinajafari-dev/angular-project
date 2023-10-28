@@ -14,7 +14,7 @@ export class MenuComponent {
       { id: 2, items: [{ title: 'درباره ما', path: '/home/about-us' }] },
       { id: 3, items: [{ title: 'محصولات', path: '/home/products/:id' }] },
       { id: 4, items: [{ title: 'ارتباط با ما', path: '/home/contact-us' }] },
-      { id: 5, items: [{ title: 'بلاگ', path: '/home/blog' }] },
+      { id: 5, items: [{ title: 'بلاگ', path: '/home/blogs' }] },
       { id: 6, items: [{ title: 'ورود', path: '/login' }] },
     ];
   }

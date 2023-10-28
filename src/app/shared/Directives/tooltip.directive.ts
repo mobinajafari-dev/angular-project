@@ -130,6 +130,7 @@ export class TooltipDirective {
     this.renderer.setStyle(this.tooltipElement, 'background-color', '#555');
     this.renderer.setStyle(this.tooltipElement, 'color', '#f3f3f3');
     this.renderer.setStyle(this.tooltipElement, 'padding', '5px');
+    this.renderer.setStyle(this.tooltipElement, 'font-size', '12px');
     this.renderer.setStyle(this.tooltipElement, 'border-radius', '5px');
     this.renderer.setStyle(this.tooltipElement, 'min-width', this.minWidth);
     this.renderer.setStyle(this.tooltipElement, 'max-width', this.maxWidth);
