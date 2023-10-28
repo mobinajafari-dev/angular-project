@@ -137,6 +137,7 @@ export class TooltipDirective {
     this.renderer.setStyle(this.tooltipElement, 'max-height', this.maxHeight);
     this.renderer.setStyle(this.tooltipElement, 'width', 'auto');
     this.renderer.setStyle(this.tooltipElement, 'height', 'auto');
+    this.renderer.setStyle(this.tooltipElement, 'border', '0.01rem solid #555');
   }
 
   /* this function automatically set the placement */

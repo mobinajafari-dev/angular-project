@@ -21,11 +21,12 @@ export class BodyComponent implements OnInit {
   passwordInput: string = 'رمز عبور';
 
   loginLinks: IMenu[] = [
-    { id: 1, items: [{ title: 'ثبت نام', path: '/login/register' }] },
+    { id: 1, items: [{ title: 'بازگشت به خانه', path: '/home' }] },
     {
       id: 2,
       items: [{ title: 'فراموشی رمز عبور', path: '/login/forget-password' }],
     },
+    { id: 3, items: [{ title: 'ثبت نام', path: '/login/register' }] },
   ];
 
   // error messages
