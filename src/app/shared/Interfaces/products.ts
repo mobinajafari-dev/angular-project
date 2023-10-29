@@ -9,6 +9,6 @@ export interface IProduct {
 }
 
 export interface IRating {
-  rate: number | undefined;
-  count: number | undefined;
+  rate: number;
+  count: number;
 }

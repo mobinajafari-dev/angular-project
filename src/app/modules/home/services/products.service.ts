@@ -11,10 +11,8 @@ export class ProductsService {
     const url = `${baseURL}/${endpoint}`;
     return this.http.get<IProduct[]>(url);
   }
-  moreDetails(id: number) {
-    const baseURL = 'https://fakestoreapi.com';
-    const endpoint = 'products';
+  getProductDetails(baseURL: string, endpoint: string, id: number) {
     const url = `${baseURL}/${endpoint}/${id}`;
-    return this.http.get<IProduct[]>(url);
+    return this.http.get<IProduct>(url);
   }
 }
