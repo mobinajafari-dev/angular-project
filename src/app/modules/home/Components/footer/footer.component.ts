@@ -37,15 +37,15 @@ export class FooterComponent {
         id: 'مطالب برگزیده',
         items: [
           { title: 'ورود', path: '/login' },
-          { title: 'محصولات', path: '/home/products/:id' },
-          { title: 'بلاگ', path: '/home/blogس' },
+          { title: 'محصولات', path: '/home/products' },
+          { title: 'بلاگ', path: '/home/blogs' },
         ],
       },
       {
         id: 'محصولات',
         items: [
-          { title: 'جدید ترین', path: '/home/products/:id' },
-          { title: 'پرفروش ترین', path: '/home/products/:id' },
+          { title: 'جدید ترین', path: '/home/product' },
+          { title: 'پرفروش ترین', path: '/home/products' },
         ],
       },
     ];

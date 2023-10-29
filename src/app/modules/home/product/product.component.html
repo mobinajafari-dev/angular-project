@@ -1,0 +1,109 @@
+<section class="flex justify-content-evenly align-items-start p-2 m-2">
+  <!-- product image -->
+  <img src="assets/images/product.jpg" alt="product" class="w-5" />
+
+  <div class="px-4 w-5">
+    <!-- product information -->
+
+    <div class="py-3 mb-2 w-full">
+      <h1 class="py-2">{{ productInfo.title }}</h1>
+      <h3 class="py-2">{{ productInfo.category }}</h3>
+      <p class="py-2"><span>کد کالا : </span> {{ productInfo.id }}</p>
+      <p class="py-2"><span>قیمت کالا : </span>{{ productInfo.price }} ریال</p>
+    </div>
+
+    <p-divider styleClass="w-full mx-auto my-2"></p-divider>
+
+    <!-- product size and color -->
+
+    <div class="py-3 mb-2 w-full flex align-items-center">
+      <p-button
+        label="{{ shoppingCardButton }}"
+        styleClass="p-2 m-1 mx-2"
+        severity="secondary"
+        [raised]="true"
+        [text]="true"
+      ></p-button>
+      <p-button
+        icon="pi pi-heart"
+        styleClass=""
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        appTooltip="افزودن به علاقه مندی ها"
+        minWidth="130px"
+      ></p-button>
+      <p class="mx-2 text-sm">{{ whishlistButtonContent }}</p>
+    </div>
+
+    <p-divider styleClass="w-full mx-auto my-2"></p-divider>
+
+    <!-- product feedback -->
+
+    <div class="w-full flex justify-content-center">
+      <app-social-media-icons></app-social-media-icons>
+      <p-button
+        label="{{ productCommentButton }}"
+        styleClass="p-2 m-1"
+        (click)="scrollToComment()"
+        severity="secondary"
+        [raised]="true"
+        [text]="true"
+      ></p-button>
+    </div>
+  </div>
+</section>
+
+<p-divider styleClass="w-10 mx-auto mt-4"></p-divider>
+
+<section>
+  <div
+    class="flex align-items-center my-3 p-2 w-full justify-content-center text-black"
+  >
+    <!-- product tab -->
+    <div class="flex flex-column align-items-center justify-content-center m-1">
+      <ul class="flex">
+        <li
+          *ngFor="let tab of menuTabs; let i = index"
+          [ngClass]="{ active: activeTabIndex === i }"
+          (click)="setActiveTab(i)"
+          class="p-3 text-xl cursor-pointer menuTab"
+          [ngClass]="{ activatedTab: true, active: activeTabIndex === i }"
+        >
+          {{ tab.label }}
+        </li>
+      </ul>
+      <div class="text-center p-4 m-1 text-md">
+        <ng-container *ngFor="let tab of menuTabs; let i = index">
+          <div *ngIf="activeTabIndex === i">
+            {{ tab.content }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <p-divider styleClass="w-10 mx-auto"></p-divider>
+  <section id="comment">
+    <!-- comments -->
+    <div class="flex justify-content-evenly align-items-center">
+      <section class="flex flex-column">
+        <h3 class="w-full my-5 text-center">{{ commentTitle }}</h3>
+        <ng-container *ngFor="let productComment of productComments"
+          ><app-comment [commentData]="productComment"></app-comment
+        ></ng-container>
+      </section>
+      <app-set-comment></app-set-comment>
+    </div>
+  </section>
+
+  <p-divider styleClass="w-10 mx-auto my-4"></p-divider>
+
+  <!-- post -->
+  <div>
+    <h3 class="w-full text-center my-5">محصولات مشابه</h3>
+    <div>
+      <app-post></app-post>
+    </div>
+  </div>
+</section>

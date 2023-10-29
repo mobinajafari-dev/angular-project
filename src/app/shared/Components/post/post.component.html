@@ -1,5 +1,24 @@
-<div>
-  <img [src]="" />
-  <h3></h3>
-  <p></p>
+<div
+  class="box-shadow p-2 w-15rem m-3 text-center border-round-md h-28rem flex flex-column align-items-center justify-content-center"
+>
+  <img [src]="postData?.image" class="w-10rem my-3 border-round-md h-10rem" />
+  <h3 class="text-base">{{ postData?.title }}</h3>
+  <ng-container *ngIf="postData && postData.rating">
+    <p-rating
+      setClass="my-4"
+      [readonly]="true"
+      [cancel]="false"
+      [(ngModel)]="postData.rating.rate"
+    ></p-rating>
+  </ng-container>
+  <p class="text-sm">{{ postData?.price }}</p>
+  <p class="text-xs">{{ postData?.category }}</p>
+  <p-button
+    (onClick)="onMoreDetails()"
+    label="{{ postButtonLabel }}"
+    styleClass="p-1 my-2 text-sm"
+    severity="secondary"
+    [raised]="true"
+    [text]="true"
+  ></p-button>
 </div>

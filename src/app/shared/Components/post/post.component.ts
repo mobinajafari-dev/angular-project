@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IPost } from '../../Interfaces/post';
+import { IProduct } from '../../Interfaces/products';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -7,5 +8,10 @@ import { IPost } from '../../Interfaces/post';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  @Input() post: IPost | undefined;
+  @Input() postData: IProduct | undefined;
+  postButtonLabel = 'مشاهده';
+  constructor(private router: Router) {}
+  onMoreDetails() {
+    this.router.navigate([`home/products/${this.postData?.id}`]);
+  }
 }

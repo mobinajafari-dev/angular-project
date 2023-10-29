@@ -11,4 +11,4 @@ export * from './Components/shared-component.api';
 export * from './Directives/shared-directive.api';
 
 // shared services
-export * from './services/shared-service.api';
+// export * from './services/shared-service.api';

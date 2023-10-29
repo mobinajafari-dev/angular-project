@@ -9,6 +9,5 @@ import { IComment } from '../../Interfaces/comment';
 export class CommentComponent {
   @Input() commentData: IComment | undefined;
   commentTitle: string = 'نظرات';
-
   constructor() {}
 }
