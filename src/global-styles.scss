@@ -162,3 +162,20 @@ $primary-black: #555;
   left: 0.25rem;
   bottom: -0.5rem;
 }
+.container {
+  display: grid;
+  /* Define the grid layout with one row and one column */
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+}
+
+.overlay {
+  /* Set the overlay div to cover the entire container */
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+}
